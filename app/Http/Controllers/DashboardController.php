@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\BankAccount;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     function __construct()
     {
+        $this->setLocale();
         $this->middleware('auth');
     }
 
-    function Home() {
-        return view('home');
+    function Home()
+    {
+        $bankAccounts = BankAccount::all()->where('user_id', Auth::user()->id);
+
+        return view('dashboard/index', ['bank_accounts' => $bankAccounts]);
     }
 }

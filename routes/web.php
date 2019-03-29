@@ -28,6 +28,7 @@ Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/login', 'LoginController@login')->name('login');
 
 Route::get('/register', 'RegisterController@index')->name('register');
+//Route::post('/register', 'RegisterController@index')->name('register');
 
 Route::get('/mollie', function () {
     $payment_id = "12345";

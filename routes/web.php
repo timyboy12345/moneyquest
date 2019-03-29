@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mollie\Api\MollieApiClient;
 
@@ -24,6 +25,7 @@ Route::get('/lang/{lang}', function ($lang) {
 })->name('lang');
 
 Route::get('/login', 'LoginController@index')->name('login');
+Route::post('/login', 'LoginController@login')->name('login');
 
 Route::get('/register', function () {
     return view('login/index');
@@ -53,3 +55,10 @@ Route::get('/mollie', function () {
         return view('mollie/error', ["error" => $e]);
     }
 });
+
+//Auth::routes(['exclude' =>'login']);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::post('/logout', 'LoginController@Logout')->name('logout');
+Route::get('/logout', 'LoginController@Logout')->name('logout');

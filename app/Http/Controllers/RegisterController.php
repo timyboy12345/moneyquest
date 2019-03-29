@@ -13,6 +13,6 @@ class RegisterController extends Controller
     }
 
     public function Index() {
-        return view('auth/register');
+        return view('register/index');
     }
 }

@@ -136,3 +136,24 @@ h1, h2, h3 {
 .footer .buttons {
     margin: 3px auto;
 }
+
+.alert {
+    width: calc(100% - 30px);
+    margin: 10px auto;
+    padding: 10px;
+    border: 2px solid rgb(228, 228, 228);
+    background: white;
+    border-radius: 5px;
+}
+
+.alert.green {
+    border-color: #c3e6cb;
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert.red {
+    border-color: #f5c6cb;
+    background-color: #f8d7da;
+    color: #721c24;
+}

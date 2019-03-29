@@ -19,7 +19,7 @@ return [
     'buttons' => [
         'login'=>'Log in',
         'register'=>'Register',
-        'submit' => 'submit'
+        'submit' => 'Submit'
     ],
 
     'words' => [

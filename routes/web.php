@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mollie\Api\MollieApiClient;
 
@@ -24,10 +25,9 @@ Route::get('/lang/{lang}', function ($lang) {
 })->name('lang');
 
 Route::get('/login', 'LoginController@index')->name('login');
+Route::post('/login', 'LoginController@login')->name('login');
 
-Route::get('/register', function () {
-    return view('register/index');
-})->name('register');
+Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::get('/mollie', function () {
     $payment_id = "12345";
@@ -53,3 +53,9 @@ Route::get('/mollie', function () {
         return view('mollie/error', ["error" => $e]);
     }
 });
+
+//Auth::routes(['exclude' =>'login']);
+
+Route::get('/home', 'DashboardController@Home')->name('dashboard');
+
+Route::get('/logout', 'LoginController@Logout')->name('logout');

@@ -18,8 +18,8 @@ return [
 
     'buttons' => [
         'login'=>'Inloggen',
-        'register'=>'register',
-        'submit' => 'voltooien'
+        'register'=>'Registreren',
+        'submit' => 'Voltooien'
     ],
 
     'words' => [

@@ -9,7 +9,7 @@
                 @auth
                     <a href="{{ url('/home') }}">Home</a>
                 @else
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('login', Config::get('app.locale')) }}">Login</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}">Register</a>
@@ -22,7 +22,7 @@
     <a href="/" class="title">MoneyQ</a>
     <div class="wrapper">
         <div class="block">
-            <h3 class="text-center">Inloggen</h3>
+            <h3 class="text-center">{{__('messages.login')}}</h3>
             <form>
                 <div class="formline">
                     <label for="email">Email</label>

@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 use Mollie\Api\MollieApiClient;
 
 
@@ -18,7 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', function() {
+Route::get('/{lang}', function ($lang) {
+    App::setlocale($lang);
+
+    return view('welcome');
+});
+
+Route::get('login/{lang}', function($lang) {
+    App::setlocale($lang);
+
     return view('login/index');
 })->name('login');
 

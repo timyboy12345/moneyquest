@@ -6,12 +6,12 @@
     <a href="/" class="title">MoneyQ</a>
     <div class="wrapper">
         <div class="block wide">
-            <h3>Welkom bij MoneyQ</h3>
-            <p>Dit is MoneyQ, hét betaalplatform van Nederland</p>
+            <h3>{{__('messages.welcome')}}</h3>
+            <p>{{__('messages.introduction')}}</p>
         </div>
 
         <div class="buttons">
-            <a class="light large" href="{{route('login')}}">Inloggen</a>
+            <a class="light large" href="{{route('login', Config::get('app.locale'))}}">Inloggen</a>
         </div>
     </div>
 @endsection

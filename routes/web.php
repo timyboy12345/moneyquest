@@ -26,7 +26,7 @@ Route::get('/lang/{lang}', function ($lang) {
 Route::get('/login', 'LoginController@index')->name('login');
 
 Route::get('/register', function () {
-    return view('login/index');
+    return view('register/index');
 })->name('register');
 
 Route::get('/mollie', function () {

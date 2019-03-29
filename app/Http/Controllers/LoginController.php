@@ -12,6 +12,7 @@ class LoginController extends Controller
 
     function __construct()
     {
+        $this->setLocale();
         $this->middleware('guest', ['except' => 'Logout']);
     }
 

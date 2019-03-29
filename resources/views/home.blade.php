@@ -15,6 +15,11 @@
                     @endif
 
                     You are logged in!
+
+                    <ul>
+                        <li>{{Auth::user()->name}}</li>
+                        <li>{{Auth::user()->email}}</li>
+                    </ul>
                 </div>
             </div>
         </div>

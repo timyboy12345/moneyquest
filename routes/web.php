@@ -27,9 +27,7 @@ Route::get('/lang/{lang}', function ($lang) {
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/login', 'LoginController@login')->name('login');
 
-Route::get('/register', function () {
-    return view('login/index');
-})->name('register');
+Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::get('/mollie', function () {
     $payment_id = "12345";
@@ -58,7 +56,6 @@ Route::get('/mollie', function () {
 
 //Auth::routes(['exclude' =>'login']);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'DashboardController@Home')->name('dashboard');
 
-//Route::post('/logout', 'LoginController@Logout')->name('logout');
 Route::get('/logout', 'LoginController@Logout')->name('logout');

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Session;
 
 class Controller extends BaseController
 {
-    public function __construct()
+    function __construct()
+    {
+        $this->setLocale();
+    }
+
+    function setLocale()
     {
         if (!isset($_COOKIE['lang'])) {
             setcookie('lang', $this->getBrowserLocale(), time() + 60 * 60 * 24 * 30, "/");

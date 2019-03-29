@@ -14,11 +14,15 @@
         </div>
 
         <div class="block">
+            <h3>{{__("messages.dashboard.youraccounts")}}</h3>
             <ul>
                 @foreach($bank_accounts as $account)
                     <li>{{$account->iban}}</li>
                 @endforeach
             </ul>
+            <div class="buttons small">
+                <a href="{{route('bankaccounts')}}" class="button small">{{__("messages.dashboard.manageaccounts")}}</a>
+            </div>
         </div>
 
         <div class="buttons">

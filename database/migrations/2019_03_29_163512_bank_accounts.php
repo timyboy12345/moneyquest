@@ -16,6 +16,7 @@ class BankAccounts extends Migration
         Schema::create('bank_accounts', function (Blueprint $table) {
             $table->string('user_id');
             $table->string('iban')->unique();
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

@@ -59,4 +59,7 @@ Route::get('/mollie', function () {
 
 Route::get('/home', 'DashboardController@Home')->name('dashboard');
 
+Route::get('/bankaccounts', 'DashboardController@Bankaccounts')->name('bankaccounts');
+Route::post('/bankaccounts', 'DashboardController@AddBankaccount');
+
 Route::get('/logout', 'LoginController@Logout')->name('logout');

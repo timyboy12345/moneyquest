@@ -16,4 +16,14 @@ return [
     'welcome' => 'Welkom bij MoneyQ',
     'introduction' => 'Dit is MoneyQ, hét betaalplatform van Nederland.',
 
+    'buttons' => [
+        'login'=>'Inloggen',
+        'register'=>'Registreren'
+    ],
+
+    'words' => [
+        'password' => 'Wachtwoord',
+        'email' => 'Email'
+    ]
+
 ];

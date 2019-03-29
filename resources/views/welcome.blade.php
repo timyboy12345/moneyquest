@@ -11,7 +11,8 @@
         </div>
 
         <div class="buttons">
-            <a class="light large" href="{{route('login', Config::get('app.locale'))}}">Inloggen</a>
+            <a class="light large" href="{{route('login')}}">{{__('messages.buttons.login')}}</a>
+            <a class="light large" href="{{route('register')}}">{{__('messages.buttons.register')}}</a>
         </div>
     </div>
 @endsection

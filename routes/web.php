@@ -11,26 +11,23 @@
 |
 */
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Mollie\Api\MollieApiClient;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@Home')->name('home');
 
-Route::get('/{lang}', function ($lang) {
-    App::setlocale($lang);
+Route::get('/lang/{lang}', function ($lang) {
+    setcookie('lang', $lang, time() + 60 * 60 * 24 * 30, '/');
 
-    return view('welcome');
-});
+    return redirect(route('home'));
+})->name('lang');
 
-Route::get('login/{lang}', function($lang) {
-    App::setlocale($lang);
+Route::get('/login', 'LoginController@index')->name('login');
 
+Route::get('/register', function () {
     return view('login/index');
-})->name('login');
+})->name('register');
 
 Route::get('/mollie', function () {
     $payment_id = "12345";

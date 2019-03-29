@@ -16,4 +16,14 @@ return [
     'welcome' => 'Welcome to MoneyQ',
     'introduction' => 'This is MoneyQ, the best payment provider of the Netherlands.',
 
+    'buttons' => [
+        'login'=>'Log in',
+        'register'=>'Register'
+    ],
+
+    'words' => [
+        'password' => 'Password',
+        'email' => 'Email'
+    ]
+
 ];

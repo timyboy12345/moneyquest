@@ -7,13 +7,14 @@ html, body {
     padding: 0px;
     margin: 0px;
     width: 100%;
-    height: 100%;
+    min-height: calc(100% - 50px);
     top: 0;
     position: absolute;
 
     background: var(--primary);
     background-image: linear-gradient(-20deg, var(--primary), var(--primary-dark));
-    background-size: 100% 100%;
+    background-size: contain;
+    background-attachment: fixed;
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     -webkit-box-sizing: border-box;
@@ -48,6 +49,7 @@ html, body {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    margin: 5px auto;
 }
 
 .block.wide {
@@ -65,6 +67,7 @@ html, body {
 }
 
 .buttons a, .button {
+    margin: 5px;
     border-radius: 3px;
     background: var(--primary);
     color: white;
@@ -78,6 +81,11 @@ html, body {
 .buttons a.light, .button.light {
     color: var(--primary);
     background: white;
+}
+
+.buttons a.small, .button.small {
+    font-size: 15px;
+    padding: 5px;
 }
 
 .buttons a:hover, .button:hover {
@@ -108,4 +116,23 @@ h1, h2, h3 {
 
 .text-center {
     text-align: center;
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: -100px;
+}
+
+.footer .wrapper {
+    background: white;
+    width: 100%;
+    bottom: 0px;
+    position: absolute;
+    box-shadow: 0 0 20px var(--primary-dark);
+}
+
+.footer .buttons {
+    margin: 3px auto;
 }

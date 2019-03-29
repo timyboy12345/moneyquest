@@ -13,6 +13,15 @@
 
 </head>
 <body>
-    @yield('content')
+@yield('content')
+
+<div class="footer">
+    <div class="wrapper">
+        <div class="buttons">
+            <a class="button small" href="{{route('lang', 'nl')}}">Nederlands</a>
+            <a class="button small" href="{{route('lang', 'en')}}">English</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

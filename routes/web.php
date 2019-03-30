@@ -29,6 +29,14 @@ Route::post('/login', 'LoginController@login')->name('login');
 
 Route::get('/register', 'RegisterController@index')->name('register');
 
+Route::get('/requests', 'RequestsController@index')->name('request');
+
+Route::get('/account', 'AccountController@index')->name('account');
+
+Route::get('/newrequest', 'NewRequestController@index')->name('newrequest');
+
+Route::get('/main', 'MainpageController@index')->name('main');
+
 Route::get('/mollie', function () {
     $payment_id = "12345";
 

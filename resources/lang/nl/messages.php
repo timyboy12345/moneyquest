@@ -19,12 +19,27 @@ return [
     'buttons' => [
         'login'=>'Inloggen',
         'register'=>'Registreren',
-        'submit' => 'Voltooien'
+        'submit' => 'Voltooien',
+        'allrequests' => 'Al mijn betaalverzoeken',
+        'logout' => 'Uitloggen',
+        'newrequest' => 'Nieuw betaalverzoek',
+        'account' => 'Account',
+        'back' => 'Terug',
+        'cancel' => 'Annuleren',
+        'createrequest' => 'Betaalverzoek aanmaken'
+    ],
+
+    'requests' =>[
+        'myrequests' => 'Mijn verzoeken',
+        'recentpayments' => 'Recente betalingen'
     ],
 
     'words' => [
         'password' => 'Wachtwoord',
-        'email' => 'Email'
+        'email' => 'Email',
+        'welcome' => 'Welkom',
+        'amount' => 'Bedrag',
+        'description' => "Beschrijving"
     ],
 
     'register' => [

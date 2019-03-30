@@ -19,12 +19,28 @@ return [
     'buttons' => [
         'login'=>'Log in',
         'register'=>'Register',
-        'submit' => 'Submit'
+        'submit' => 'Submit',
+        'allrequests' => 'All my requests',
+        'logout' => 'Logout',
+        'newrequest' => 'New request',
+        'account' => 'Account',
+        'back' => 'Back',
+        'cancel' => 'Cancel',
+        'createrequest' => 'Create request'
+    ],
+
+
+    'requests' =>[
+        'myrequests' => 'My requests',
+        'recentpayments' => 'Recent payments'
     ],
 
     'words' => [
         'password' => 'Password',
-        'email' => 'Email'
+        'email' => 'Email',
+        'welcome' => 'Welcome',
+        'amount' => 'Amount',
+        'description' => "Description"
     ],
 
     'register' => [

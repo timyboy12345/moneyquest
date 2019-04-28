@@ -11,7 +11,6 @@
 |
 */
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mollie\Api\MollieApiClient;
 
@@ -23,12 +22,6 @@ Route::get('/lang/{lang}', function ($lang) {
 
     return redirect(route('home'));
 })->name('lang');
-
-Route::get('/login', 'LoginController@index')->name('login');
-Route::post('/login', 'LoginController@login')->name('login');
-
-Route::get('/register', 'RegisterController@index')->name('register');
-//Route::post('/register', 'RegisterController@index')->name('register');
 
 Route::get('/mollie', function () {
     $payment_id = "12345";
@@ -55,11 +48,17 @@ Route::get('/mollie', function () {
     }
 });
 
-//Auth::routes(['exclude' =>'login']);
+// Include authentication routes
+Auth::routes();
 
-Route::get('/home', 'DashboardController@Home')->name('dashboard');
+// Dashboard group
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'DashboardController@Home')->name('dashboard');
 
-Route::get('/bankaccounts', 'DashboardController@Bankaccounts')->name('bankaccounts');
-Route::post('/bankaccounts', 'DashboardController@AddBankaccount');
+    Route::get('/bankaccounts', 'Dashboard\Bankaccounts@Read')->name('bankaccounts');
+    Route::post('/bankaccounts', 'Dashboard\Bankaccounts@Create');
 
-Route::get('/logout', 'LoginController@Logout')->name('logout');
+    Route::get('/bankaccounts/delete/{account}', 'Dashboard\Bankaccounts@Delete')->name('bankaccounts-delete');
+
+    Route::get('/logout', 'LoginController@Logout')->name('logout');
+});

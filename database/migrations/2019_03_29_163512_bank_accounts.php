@@ -14,7 +14,8 @@ class BankAccounts extends Migration
     public function up()
     {
         Schema::create('bank_accounts', function (Blueprint $table) {
-            $table->string('user_id');
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->string('iban')->unique();
             $table->timestamps();
 

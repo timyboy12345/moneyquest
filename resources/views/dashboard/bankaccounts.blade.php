@@ -9,7 +9,7 @@
             <h3>{{__("messages.dashboard.youraccounts")}}</h3>
             <ul>
                 @foreach($bank_accounts as $account)
-                    <li>{{$account->iban}}</li>
+                    <li>{{$account->iban}} <a href="{{route('bankaccounts-delete', $account->iban)}}">Verwijder</a></li>
                 @endforeach
             </ul>
 

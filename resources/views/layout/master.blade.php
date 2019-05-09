@@ -9,6 +9,7 @@
 
     <link href="/css/default.css" rel="stylesheet" type="text/css">
     <link href="/css/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/account.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
 
 </head>

@@ -1,0 +1,32 @@
+div.articlebuttons {
+    display: flex;
+    flex-direction: row;
+    margin: 15px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+div.articleflex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.article {
+    width: 50%;
+    min-width: 200px;
+}
+
+div.request{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+div.request input[type='text'] {
+    width: 60%;
+
+}
+

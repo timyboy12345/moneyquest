@@ -26,7 +26,6 @@
                 <div class="formline">
                     <label for="email">{{__('messages.register.repeat-password')}}</label>
                     <input type="text" placeholder="{{__('messages.register.password')}}" id="repeatpassword">
-                    <div class="hint">{{__('messages.register.password-hint')}}</div>
                 </div>
                 <div class="formline">
                     <label for="email">{{__('messages.register.first-name')}}</label>
@@ -39,7 +38,7 @@
                 </div>
                 <div class="formline">
                     <label for="email">{{__('messages.register.birth-date')}}</label>
-                    <input type="text" placeholder="{{__('messages.register.birth-date')}}" id="birthdate">
+                    <input type="date" placeholder="{{__('messages.register.birth-date')}}" id="birthdate">
                 </div>
                 <div class="formline">
                     <label for="email">{{__('messages.register.phone-number')}}</label>
@@ -51,7 +50,12 @@
                     <input type="text" placeholder="{{__('messages.register.account-number')}}" id="phonenumber">
                 </div>
                 <div class="formline">
-                    <input type="checkbox" name="vehicle1" value="Bike">
+
+                    <div class="hint">
+                        <input type="checkbox">
+                        {{__('messages.register.conditions')}}
+
+                    </div>
                 </div>
                 <input class="button" type="submit">
             </form>

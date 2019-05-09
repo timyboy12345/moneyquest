@@ -15,37 +15,49 @@ return [
 
     'welcome' => 'Welcome to MoneyQ',
     'introduction' => 'This is MoneyQ, the best payment provider of the Netherlands.',
-
     'buttons' => [
-        'login' => 'Log in',
-        'register' => 'Register',
+        'login'=>'Log in',
+        'register'=>'Register',
         'submit' => 'Submit',
-        'logout' => "Logout"
+        'allrequests' => 'All my requests',
+        'logout' => 'Logout',
+        'newrequest' => 'New request',
+        'account' => 'Account',
+        'back' => 'Back',
+        'cancel' => 'Cancel',
+        'createrequest' => 'Create request'
+    ],
+    
+    'requests' =>[
+        'myrequests' => 'My requests',
+        'recentpayments' => 'Recent payments'
     ],
 
     'words' => [
         'password' => 'Password',
         'email' => 'Email',
-        'bankaccount' => "Bank account"
+        'welcome' => 'Welcome',
+        'amount' => 'Amount',
+        'description' => "Description"
     ],
 
     'register' => [
-        'username' => 'Username',
-        'username-hint' => 'Your username will be shown to other users',
-        'email' => 'Email',
-        'email-hint' => 'Your email will be used to verify your account',
-        'password' => 'Password',
-        'password-hint' => 'Don’t use your default password so your account is optimally protected',
-        'repeat-password' => 'Repeat password',
-        'first-name' => 'First name',
-        'first-name-hint' => 'Your first name will be shown to other users',
-        'middle-name' => 'Middle name',
-        'last-name' => 'Last name',
-        'birth-date' => 'Birth date',
-        'phone-number' => 'Phone number',
-        'phone-number-hint' => "Your phone number will be used to secure your account",
-        'account-number' => 'Account number',
-        'conditions' => 'You agree with the conditions',
+    'username' => 'Username',
+    'username-hint' => 'Your username will be shown to other users',
+    'email' => 'Email',
+    'email-hint'  => 'Your email will be used to verify your account',
+    'password' => 'Password',
+    'password-hint' => 'Don’t use your default password so your account is optimally protected',
+    'repeat-password' => 'Repeat password',
+    'first-name' => 'First name',
+    'first-name-hint' => 'Your first name will be shown to other users',
+    'middle-name' => 'Middle name',
+    'last-name' => 'Last name',
+    'birth-date' => 'Birth date',
+    'phone-number' => 'Phone number',
+    'phone-number-hint' => "Your phone number will be used to secure your account",
+    'account-number' => 'Account number',
+    'conditions' => 'You agree with the conditions',
     ],
 
     'dashboard'=> [

@@ -27,6 +27,11 @@ class RequestController extends Controller
     {
         $request_id = Str::random(50);
 
+        $r->validate([
+            'quantity' => 'required|numeric|between:0,50000',
+            'description' => 'max:255'
+        ]);
+
         $request = new \App\Request([
             "id" => $request_id,
             "user_id" => Auth::user()->id,

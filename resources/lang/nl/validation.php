@@ -175,5 +175,6 @@ return [
         'title'                 => 'titel',
         'username'              => 'gebruikersnaam',
         'year'                  => 'jaar',
+        'quantity'              => 'Hoeveelheid'
     ],
 ];

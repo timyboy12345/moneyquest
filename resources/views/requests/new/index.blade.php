@@ -12,12 +12,24 @@
 
                 <div class="formline">
                     <label for="quantity">{{__('messages.words.amount')}}</label>
-                    <input type="number" name="quantity" id="quantity">
+                    <input value="{{old('quantity')}}" type="number" name="quantity" id="quantity">
+
+                    @if ($errors->has('quantity'))
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('quantity') }}</strong>
+                                    </span>
+                    @endif
                 </div>
 
                 <div class="formline">
                     <label for=description>{{__('messages.words.description')}}</label>
-                    <input type="text" id="description">
+                    <input value="{{old('description')}}" type="text" id="description">
+
+                    @if ($errors->has('description'))
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                    @endif
                 </div>
 
                 <div class="buttons stretch margin-top">

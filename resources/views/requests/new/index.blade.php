@@ -7,18 +7,24 @@
     <div class="wrapper">
         <div class="block">
             <h3 class="text-center">{{__('messages.buttons.newrequest')}}</h3>
-            <div class="request">
+            <form method="post">
+                @csrf
 
-                {{__('messages.words.amount')}}<input type="number" name="quantity" id="quantity">
-                <label for=email>{{__('messages.words.description')}}</label>
-                <input type="text" id="description">
-
-                <div class="articlebuttons">
-                    <a class="button small" href="{{route('main')}}">{{__('messages.buttons.cancel')}}</a>
-                    <a class="button small" href="">{{__('messages.buttons.createrequest')}}</a>
+                <div class="formline">
+                    <label for="quantity">{{__('messages.words.amount')}}</label>
+                    <input type="number" name="quantity" id="quantity">
                 </div>
-            </div>
 
+                <div class="formline">
+                    <label for=description>{{__('messages.words.description')}}</label>
+                    <input type="text" id="description">
+                </div>
+
+                <div class="buttons stretch margin-top">
+                    <a class="button small" href="{{route('main')}}">{{__('messages.buttons.cancel')}}</a>
+                    <input type="submit" style="margin: 5px; width: initial;" class="button small" value="{{__('messages.buttons.createrequest')}}" href="">
+                </div>
+            </form>
         </div>
     </div>
 @endsection

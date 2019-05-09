@@ -39,7 +39,8 @@ return [
         'welcome' => 'Welcome',
         'amount' => 'Amount',
         'description' => "Description",
-        'bankaccount' => "Bank account"
+        'bankaccount' => "Bank account",
+        'request' => 'Payment request'
     ],
 
     'register' => [

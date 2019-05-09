@@ -40,7 +40,8 @@ return [
         'welcome' => 'Welkom',
         'amount' => 'Bedrag',
         'description' => "Beschrijving",
-        'bankaccount' => "Bankrekening"
+        'bankaccount' => "Bankrekening",
+        'request' => 'Betaalverzoek'
     ],
 
     'register' => [

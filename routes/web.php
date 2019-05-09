@@ -73,6 +73,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Your account
     Route::get('/account', 'Dashboard\AccountController@Read')->name('account');
+    Route::get('/account/delete', 'Dashboard\AccountController@Delete')->name('deleteaccount');
 
     // Requests
     Route::get('/requests', 'RequestController@List');

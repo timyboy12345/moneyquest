@@ -36,7 +36,7 @@
 
                 <div class="formline">
                     <label for="password">{{__('messages.register.password')}}</label>
-                    <input type="text" placeholder="{{__('messages.register.password')}}" id="password" name="password">
+                    <input type="password" placeholder="{{__('messages.register.password')}}" id="password" name="password">
                     <div class="hint">{{__('messages.register.password-hint')}}</div>
 
                     @if ($errors->has('password'))
@@ -48,7 +48,7 @@
 
                 <div class="formline">
                     <label for="password_confirmation">{{__('messages.register.repeat-password')}}</label>
-                    <input type="text" placeholder="{{__('messages.register.password')}}" id="password_confirmation"
+                    <input type="password" placeholder="{{__('messages.register.password')}}" id="password_confirmation"
                            name="password_confirmation">
 
                     @if ($errors->has('password_confirmation'))

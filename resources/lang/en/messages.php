@@ -38,7 +38,8 @@ return [
         'email' => 'Email',
         'welcome' => 'Welcome',
         'amount' => 'Amount',
-        'description' => "Description"
+        'description' => "Description",
+        'bankaccount' => "Bank account"
     ],
 
     'register' => [

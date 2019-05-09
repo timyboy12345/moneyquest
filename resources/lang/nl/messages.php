@@ -39,7 +39,8 @@ return [
         'email' => 'Email',
         'welcome' => 'Welkom',
         'amount' => 'Bedrag',
-        'description' => "Beschrijving"
+        'description' => "Beschrijving",
+        'bankaccount' => "Bankrekening"
     ],
 
     'register' => [

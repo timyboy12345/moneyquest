@@ -76,7 +76,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account/delete', 'Dashboard\AccountController@Delete')->name('deleteaccount');
 
     // Requests
-    Route::get('/requests', 'RequestController@List');
+    Route::get('/requests', 'RequestController@List')->name('requests');
+    Route::get('/request/create/', 'RequestController@Create')->name('newrequests');
 
     // Logout
     Route::get('/logout', 'LoginController@Logout')->name('logout');

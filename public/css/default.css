@@ -40,8 +40,19 @@ html, body {
     /*align-items: center;*/
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+.column-50 {
+    max-width: 48%;
+}
+
 .block {
-    width: 30%;
+    flex-grow: 1;
     padding: 15px;
     background: white;
     -webkit-border-radius: 3px;
@@ -60,9 +71,14 @@ html, body {
 /* buttons */
 .buttons {
     display: flex;
-    margin: 5px auto;
+    flex-wrap: wrap;
+    margin: 0;
     width: 100%;
     justify-content: center;
+}
+
+.buttons.stretch .button, .buttons.stretch a, .button.stretch {
+    flex-grow: 1;
 }
 
 .buttons a, .button {

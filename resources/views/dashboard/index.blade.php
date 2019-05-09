@@ -7,11 +7,15 @@
     <div class="wrapper">
         <div class="column column-50">
             <div class="block">
-                <h3>{{__('messages.welcome')}}</h3>
-                <ul>
-                    <li>{{Auth::user()->username}}</li>
-                    <li>{{Auth::user()->email}}</li>
-                </ul>
+                <h3>Betaalverzoeken</h3>
+                <div class="list wide">
+                    @foreach ($requests as $request)
+                        <a href="{{route('request', ["id"=>$request->id])}}" class="item">
+                            <div class="primary text-purple text-bold">{{$request->description}} - &euro;{{$request->amount}}</div>
+                            <div class="secondary">{{$request->bank_iban}}</div>
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </div>
 

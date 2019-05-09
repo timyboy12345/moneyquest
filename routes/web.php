@@ -74,8 +74,9 @@ Route::middleware(['auth'])->group(function () {
     // Requests
     Route::get('/requests', 'Dashboard\RequestController@List')->name('requests');
     Route::get('/request/{id}', 'Dashboard\RequestController@Read')->name('request');
-    Route::get('/requests/create/', 'Dashboard\RequestController@Create')->name('createrequest');
+    Route::get('/request/{id}/disable', 'Dashboard\RequestController@Disable')->name('disablerequest');
 
+    Route::get('/requests/create/', 'Dashboard\RequestController@Create')->name('createrequest');
     Route::post('/requests/create/', 'Dashboard\RequestController@CreatePost');
 
     // Logout

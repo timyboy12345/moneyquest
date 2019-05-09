@@ -17,8 +17,8 @@ return [
     'introduction' => 'Dit is MoneyQ, hét betaalplatform van Nederland.',
 
     'buttons' => [
-        'login'=>'Inloggen',
-        'register'=>'Registreren',
+        'login' => 'Inloggen',
+        'register' => 'Registreren',
         'submit' => 'Voltooien',
         'allrequests' => 'Al mijn betaalverzoeken',
         'logout' => 'Uitloggen',
@@ -26,10 +26,11 @@ return [
         'account' => 'Account',
         'back' => 'Terug',
         'cancel' => 'Annuleren',
+        'disable' => 'Uitschakelen',
         'createrequest' => 'Betaalverzoek aanmaken'
     ],
 
-    'requests' =>[
+    'requests' => [
         'myrequests' => 'Mijn verzoeken',
         'recentpayments' => 'Recente betalingen'
     ],
@@ -41,31 +42,40 @@ return [
         'amount' => 'Bedrag',
         'description' => "Beschrijving",
         'bankaccount' => "Bankrekening",
-        'request' => 'Betaalverzoek'
+        'request' => 'Betaalverzoek',
+        'payments' => "Betalingen",
+        'disabled' => "Uitgeschakeld",
+        'active' => "Actief",
+        'state' => "Status"
     ],
 
     'register' => [
-    'username' => 'Gebruikersnaam',
-    'username-hint' => 'Je gebruikersnaam wordt weergegeven aan andere gebruikers',
-    'email' => 'Email',
-    'email-hint'  => 'Je email wordt geruikt om je account te verifieëren',
-    'password' => 'Wachtwoord',
-    'password-hint' => 'Gebruik een wachtwoord wat je nog niet op een andere plek gebruikt om je account optimaal te beveiligen',
-    'repeat-password' => 'Herhaal wachtwoord',
-    'first-name' => 'Voornaam',
-    'first-name-hint' => 'Je voornaam wordt weergegeven aan andere gebruikers',
-    'middle-name' => 'Tussenvoegsel(s)',
-    'last-name' => 'Achternaam',
-    'birth-date' => 'Geboortedatum',
-    'phone-number' => 'Telefoon nummer',
-    'phone-number-hint' => "Je telefoonnummer wordt gebruikt om je account te beveiligen",
-    'account-number' => 'Rekeningnummer',
-    'conditions' => 'Je gaat akkoord met de voorwaarden'
+        'username' => 'Gebruikersnaam',
+        'username-hint' => 'Je gebruikersnaam wordt weergegeven aan andere gebruikers',
+        'email' => 'Email',
+        'email-hint' => 'Je email wordt geruikt om je account te verifieëren',
+        'password' => 'Wachtwoord',
+        'password-hint' => 'Gebruik een wachtwoord wat je nog niet op een andere plek gebruikt om je account optimaal te beveiligen',
+        'repeat-password' => 'Herhaal wachtwoord',
+        'first-name' => 'Voornaam',
+        'first-name-hint' => 'Je voornaam wordt weergegeven aan andere gebruikers',
+        'middle-name' => 'Tussenvoegsel(s)',
+        'last-name' => 'Achternaam',
+        'birth-date' => 'Geboortedatum',
+        'phone-number' => 'Telefoon nummer',
+        'phone-number-hint' => "Je telefoonnummer wordt gebruikt om je account te beveiligen",
+        'account-number' => 'Rekeningnummer',
+        'conditions' => 'Je gaat akkoord met de voorwaarden'
     ],
 
-    'dashboard'=> [
+    'dashboard' => [
         "youraccounts" => "Jouw bankrekeningen",
         "manageaccounts" => "Beheer je bankrekeningen"
+    ],
+
+    'sentences' => [
+        'bankaccountrequired' => "Je moet een bankaccount aan je MoneyQuest-account toevoegen!",
+        'neverpaid' => 'Dit betaalverzoek is nog nooit betaald'
     ]
 
 ];

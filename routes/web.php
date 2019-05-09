@@ -30,8 +30,6 @@ Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::get('/requests', 'RequestsController@index')->name('request');
 
-Route::get('/newrequest', 'NewRequestController@index')->name('newrequest');
-
 Route::get('/main', 'MainpageController@index')->name('main');
 
 Route::get('/mollie', function () {
@@ -76,8 +74,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account/delete', 'Dashboard\AccountController@Delete')->name('deleteaccount');
 
     // Requests
-    Route::get('/requests', 'RequestController@List')->name('requests');
-    Route::get('/request/create/', 'RequestController@Create')->name('newrequests');
+    Route::get('/requests', 'Dashboard\RequestController@List')->name('requests');
+    Route::get('/request/create/', 'Dashboard\RequestController@Create')->name('newrequest');
 
     // Logout
     Route::get('/logout', 'LoginController@Logout')->name('logout');

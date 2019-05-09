@@ -174,3 +174,8 @@ h1, h2, h3 {
 }
 
 
+@media all and (max-width: 750px) {
+    .column-50 {
+        max-width: initial;
+    }
+}

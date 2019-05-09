@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title', "MoneyQ - Home")
+@section('title', "MoneyQ - Nieuw betaalverzoek")
 
 @section('content')
     <a href="/" class="title">MoneyQ</a>

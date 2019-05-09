@@ -30,8 +30,6 @@ Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::get('/requests', 'RequestsController@index')->name('request');
 
-Route::get('/account', 'AccountController@index')->name('account');
-
 Route::get('/newrequest', 'NewRequestController@index')->name('newrequest');
 
 Route::get('/main', 'MainpageController@index')->name('main');
@@ -73,8 +71,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/bankaccounts', 'Dashboard\BankaccountController@Create');
     Route::get('/bankaccounts/delete/{account}', 'Dashboard\BankaccountController@Delete')->name('bankaccounts-delete');
 
+    // Your account
+    Route::get('/account', 'Dashboard\AccountController@Read')->name('account');
+
     // Requests
     Route::get('/requests', 'RequestController@List');
 
+    // Logout
     Route::get('/logout', 'LoginController@Logout')->name('logout');
 });

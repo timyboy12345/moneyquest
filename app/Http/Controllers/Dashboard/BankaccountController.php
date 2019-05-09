@@ -3,27 +3,30 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\BankAccount;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class BankaccountController extends Controller
 {
     // List function
-    public function Read(){
+    public function Read()
+    {
         $bankAccounts = BankAccount::all()->where('user_id', Auth::user()->id);
         return view('dashboard/bankaccounts', ['bank_accounts' => $bankAccounts]);
     }
 
     // Create function
-    public function Create() {
+    public function Create()
+    {
         $account = new BankAccount();
 
         if (!isset($_POST['account'])) {
             return route('bankaccounts');
         }
 
-        $user_accouknt_number = $_POST['account'];
+        if (BankAccount::where("iban", $_POST['account'])->count() > 0) {
+            return back()->withErrors(['account' => "Er is al een account wat deze rekening gebruikt."]);
+        }
 
         if (!preg_match('/([A-Z]{2})([0-9]{2})([A-Z]{4})([0-9]{8,10})/', $_POST['account'])) {
             return back()->withErrors(['account' => "Geen geldige IBAN rekening formaat"]);
@@ -37,7 +40,8 @@ class BankaccountController extends Controller
     }
 
     // Delete function
-    public function Delete($account) {
+    public function Delete($account)
+    {
         $account = BankAccount::where([['iban', $account], ['user_id', Auth::user()->id]])->first();
 
         if (!isset($account))

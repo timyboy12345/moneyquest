@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->setLocale();
-        $this->middleware('guest', ['except' => 'index']);
+        $this->middleware('guest');
     }
 
     /**

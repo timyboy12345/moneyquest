@@ -8,7 +8,7 @@
         <div class="block">
             <h3>{{__('messages.welcome')}}</h3>
             <ul>
-                <li>{{Auth::user()->name}}</li>
+                <li>{{Auth::user()->username}}</li>
                 <li>{{Auth::user()->email}}</li>
             </ul>
         </div>
@@ -26,6 +26,7 @@
         </div>
 
         <div class="buttons">
+            <a class="light large" href="{{route('account')}}">{{__('messages.buttons.account')}}</a>
             <a class="light large" href="{{route('logout')}}">{{__('messages.buttons.logout')}}</a>
         </div>
     </div>

@@ -60,7 +60,7 @@ html, body {
 /* buttons */
 .buttons {
     display: flex;
-    margin: 15px auto;
+    margin: 5px auto;
     width: 100%;
     justify-content: center;
 }

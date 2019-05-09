@@ -59,6 +59,11 @@ return [
     'phone-number-hint' => "Je telefoonnummer wordt gebruikt om je account te beveiligen",
     'account-number' => 'Rekeningnummer',
     'conditions' => 'Je gaat akkoord met de voorwaarden'
+    ],
+
+    'dashboard'=> [
+        "youraccounts" => "Jouw bankrekeningen",
+        "manageaccounts" => "Beheer je bankrekeningen"
     ]
 
 ];

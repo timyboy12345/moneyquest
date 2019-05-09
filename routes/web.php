@@ -11,7 +11,6 @@
 |
 */
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mollie\Api\MollieApiClient;
 
@@ -62,8 +61,17 @@ Route::get('/mollie', function () {
     }
 });
 
-//Auth::routes(['exclude' =>'login']);
+// Include authentication routes
+Auth::routes();
 
-Route::get('/home', 'DashboardController@Home')->name('dashboard');
+// Dashboard group
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'DashboardController@Home')->name('dashboard');
 
-Route::get('/logout', 'LoginController@Logout')->name('logout');
+    Route::get('/bankaccounts', 'Dashboard\Bankaccounts@Read')->name('bankaccounts');
+    Route::post('/bankaccounts', 'Dashboard\Bankaccounts@Create');
+
+    Route::get('/bankaccounts/delete/{account}', 'Dashboard\Bankaccounts@Delete')->name('bankaccounts-delete');
+
+    Route::get('/logout', 'LoginController@Logout')->name('logout');
+});

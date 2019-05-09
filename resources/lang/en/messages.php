@@ -15,7 +15,6 @@ return [
 
     'welcome' => 'Welcome to MoneyQ',
     'introduction' => 'This is MoneyQ, the best payment provider of the Netherlands.',
-
     'buttons' => [
         'login'=>'Log in',
         'register'=>'Register',
@@ -28,8 +27,7 @@ return [
         'cancel' => 'Cancel',
         'createrequest' => 'Create request'
     ],
-
-
+    
     'requests' =>[
         'myrequests' => 'My requests',
         'recentpayments' => 'Recent payments'
@@ -60,5 +58,10 @@ return [
     'phone-number-hint' => "Your phone number will be used to secure your account",
     'account-number' => 'Account number',
     'conditions' => 'You agree with the conditions',
+    ],
+
+    'dashboard'=> [
+        "youraccounts" => "Your bank accounts",
+        "manageaccounts" => "Manage your bank accounts"
     ]
 ];

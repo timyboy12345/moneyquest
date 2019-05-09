@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class Bankaccounts extends Controller
+class BankaccountController extends Controller
 {
     // List function
     public function Read(){

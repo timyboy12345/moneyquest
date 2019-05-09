@@ -53,12 +53,15 @@ Auth::routes();
 
 // Dashboard group
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', 'DashboardController@Home')->name('dashboard');
+    Route::get('/home', 'Dashboard\DashboardController@Home')->name('dashboard');
 
-    Route::get('/bankaccounts', 'Dashboard\Bankaccounts@Read')->name('bankaccounts');
-    Route::post('/bankaccounts', 'Dashboard\Bankaccounts@Create');
+    // Bank accounts
+    Route::get('/bankaccounts', 'Dashboard\BankaccountController@Read')->name('bankaccounts');
+    Route::post('/bankaccounts', 'Dashboard\BankaccountController@Create');
+    Route::get('/bankaccounts/delete/{account}', 'Dashboard\BankaccountController@Delete')->name('bankaccounts-delete');
 
-    Route::get('/bankaccounts/delete/{account}', 'Dashboard\Bankaccounts@Delete')->name('bankaccounts-delete');
+    // Requests
+    Route::get('/requests', 'RequestController@List');
 
     Route::get('/logout', 'LoginController@Logout')->name('logout');
 });

@@ -25,7 +25,9 @@ return [
         'account' => 'Account',
         'back' => 'Back',
         'cancel' => 'Cancel',
-        'createrequest' => 'Create request'
+        'createrequest' => 'Create request',
+        'ok' => 'Okay',
+        'next' => "Next"
     ],
 
     'requests' => [

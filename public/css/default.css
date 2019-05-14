@@ -67,6 +67,28 @@ html, body {
     width: 100%;
 }
 
+.blockborder{
+    flex-grow: 1;
+    padding: 15px;
+    background: #f7f7f7;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 5px;
+    flex-grow: 1;
+    border: 2px solid #f2f2f2;
+    min-height: 200px;
+    text-align: center;
+}
+
+.blockborder h1{
+    font-size: 24px;
+}
+
+.blockborder .buttons{
+    padding-top: 200px;
+    justify-content: flex-end;
+}
 
 /* buttons */
 .buttons {

@@ -26,7 +26,9 @@ return [
         'account' => 'Account',
         'back' => 'Terug',
         'cancel' => 'Annuleren',
-        'createrequest' => 'Betaalverzoek aanmaken'
+        'createrequest' => 'Betaalverzoek aanmaken',
+        'ok' => 'Oké',
+        'next' => "Volgende"
     ],
 
     'requests' =>[

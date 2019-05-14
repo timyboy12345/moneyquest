@@ -17,11 +17,7 @@ use Mollie\Api\MollieApiClient;
 
 Route::get('/', 'HomeController@Home')->name('home');
 
-Route::get('/lang/{lang}', function ($lang) {
-    setcookie('lang', $lang, time() + 60 * 60 * 24 * 30, '/');
-
-    return redirect(route('home'));
-})->name('lang');
+Route::get('lang/{locale}', 'LocalizationController@index')->name('lang');
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/login', 'LoginController@login')->name('login');
@@ -29,6 +25,10 @@ Route::post('/login', 'LoginController@login')->name('login');
 Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::get('/main', 'MainpageController@index')->name('main');
+
+Route::get('/pay', 'RequestPaymentController@index')->name('pay');
+Route::get('/pay/pay2', 'RequestPaymentController@step2')->name('step2');
+Route::get('/finished', 'RequestPaymentController@finished')->name('finished');
 
 Route::get('/mollie', function () {
     $payment_id = "12345";

@@ -43,7 +43,7 @@
         <div class="block">
             <div class="buttons">
                 <a href="{{route('dashboard')}}">Home</a>
-                <a href="{{route('deleteaccount')}}">Account verwijderen</a>
+                <a href="{{route('deleteaccount')}}">{{__('messages.buttons.delete-account')}}</a>
             </div>
         </div>
     </div>

@@ -32,6 +32,7 @@ return [
         'delete' => 'Delete',
         'home' => 'Home',
         'sharerequest' => 'Share request',
+        'delete-account' => 'Delete account',
     ],
 
     'requests' => [
@@ -81,6 +82,12 @@ return [
         'bankaccountrequired' => "A bank account is required!",
         'neverpaid' => 'This payment request has never been paid',
         'noactiverequests' => 'No active requests found',
-        'norequests' => 'No requests found'
+        'norequests' => 'No requests found',
+         'choose-bank' => 'Choose your bank',
+    ],
+
+    'pay' => [
+        'for' => 'for',
+        'is-asking' => 'is asking',
     ]
 ];

@@ -29,7 +29,7 @@
                         </span>
                     @endif
                 </div>
-                <input class="button" type="submit">
+                <input class="button" type="submit" value="{{__('messages.buttons.login')}}">
             </form>
         </div>
     </div>

@@ -33,6 +33,7 @@ return [
         'delete' => 'Verwijderen',
         'home' => 'Home',
         'sharerequest' => 'Deel betaalverzoek',
+        'delete-account' => 'Account verwijderen',
     ],
 
     'requests' => [

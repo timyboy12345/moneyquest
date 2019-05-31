@@ -32,6 +32,7 @@ return [
         'delete' => 'Delete',
         'home' => 'Home',
         'sharerequest' => 'Share request',
+        'delete-account' => 'Delete account',
     ],
 
     'requests' => [

@@ -29,8 +29,7 @@ return [
         'createrequest' => 'Betaalverzoek aanmaken',
         'ok' => 'Oké',
         'next' => "Volgende",
-        'disable' => 'Uitschakelen',
-        'createrequest' => 'Betaalverzoek aanmaken'
+        'disable' => 'Uitschakelen'
     ],
 
     'requests' => [

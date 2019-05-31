@@ -30,7 +30,8 @@ return [
         'next' => "Next",
         'disable' => 'Disable',
         'delete' => 'Delete',
-        'home'=>'Home',
+        'home' => 'Home',
+        'sharerequest' => 'Share request',
     ],
 
     'requests' => [

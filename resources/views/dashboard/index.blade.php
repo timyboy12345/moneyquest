@@ -43,7 +43,7 @@
                 <a class="light large" href="{{route('createrequest')}}">{{__('messages.buttons.newrequest')}}</a>
                 <a class="light large" href="{{route('account')}}">{{__('messages.buttons.account')}}</a>
                 <a class="light large" href="{{route('logout')}}">{{__('messages.buttons.logout')}}</a>
-                <a class="light large" href="{{route('pay')}}">{{__('pay')}}</a>
+                <a class="light large" href="{{route('pay', 1)}}">{{__('pay')}}</a>
             </div>
         </div>
     </div>

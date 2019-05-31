@@ -143,7 +143,7 @@ html, body {
     box-shadow: none;
 }
 
-.buttons a.large, .button.large {
+.buttons a.large, .buttons.large .button, .buttons.large a, .button.large {
     font-size: 20px;
     padding: 10px 20px;
 }

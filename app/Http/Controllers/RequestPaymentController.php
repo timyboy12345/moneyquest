@@ -4,20 +4,18 @@ namespace App\Http\Controllers;
 
 class RequestPaymentController extends Controller
 {
-    function __construct()
+    public function Index()
     {
-        $this->setLocale();
-    }
-
-    public function Index(){
         return view('payrequest/index');
     }
 
-    public function Step2(){
+    public function Step2()
+    {
         return view('payrequest/step2/index');
     }
 
-    public function Finished(){
+    public function Finished()
+    {
         return view('payrequest/finished/index');
     }
 }

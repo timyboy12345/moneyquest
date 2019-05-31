@@ -32,6 +32,7 @@ return [
         'disable' => 'Uitschakelen',
         'delete' => 'Verwijderen',
         'home' => 'Home',
+        'sharerequest' => 'Deel betaalverzoek',
     ],
 
     'requests' => [

@@ -49,6 +49,7 @@
                 <a class="button small light" href="{{route('home')}}">{{__('messages.buttons.home')}}</a>
 
                 @if ($request->active)
+                    <a class="button small light" href="{{route('sharerequest', $request->id)}}">{{__('messages.buttons.sharerequest')}}</a>
                     <a class="button small light" href="{{route('disablerequest', $request->id)}}">{{__('messages.buttons.disable')}}</a>
                 @endif
             </div>

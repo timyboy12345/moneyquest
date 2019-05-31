@@ -26,8 +26,8 @@ Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::get('/main', 'MainpageController@index')->name('main');
 
-Route::get('/pay', 'RequestPaymentController@index')->name('pay');
-Route::get('/pay/pay2', 'RequestPaymentController@step2')->name('step2');
+Route::get('/pay/{id}', 'RequestPaymentController@index')->name('pay');
+Route::get('/pay/{id}/bank', 'RequestPaymentController@step2')->name('step2');
 Route::get('/finished', 'RequestPaymentController@finished')->name('finished');
 
 Route::get('/mollie', function () {
@@ -75,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/requests', 'Dashboard\RequestController@List')->name('requests');
     Route::get('/request/{id}', 'Dashboard\RequestController@Read')->name('request');
     Route::get('/request/{id}/disable', 'Dashboard\RequestController@Disable')->name('disablerequest');
+    Route::get('/request/{id}/share', 'Dashboard\RequestController@Share')->name('sharerequest');
 
     Route::get('/requests/create/', 'Dashboard\RequestController@Create')->name('createrequest');
     Route::post('/requests/create/', 'Dashboard\RequestController@CreatePost');

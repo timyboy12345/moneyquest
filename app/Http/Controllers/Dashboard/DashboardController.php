@@ -17,7 +17,7 @@ class DashboardController extends Controller
     function Home()
     {
         $bankAccounts = BankAccount::all()->where('user_id', Auth::user()->id);
-        $requests = \App\Request::where('user_id', Auth::user()->id)->where('active')->take(5)->get();
+        $requests = \App\Request::where('user_id', Auth::user()->id)->where('active', 1)->take(5)->get();
 
         return view('dashboard/index', ['bank_accounts' => $bankAccounts, 'requests' => $requests]);
     }

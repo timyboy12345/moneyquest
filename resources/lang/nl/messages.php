@@ -83,7 +83,8 @@ return [
         'bankaccountrequired' => "Je moet een bankaccount aan je MoneyQuest-account toevoegen!",
         'neverpaid' => 'Dit betaalverzoek is nog nooit betaald',
         'noactiverequests' => 'Geen actieve verzoeken gevonden',
-        'norequests' => 'Geen verzoeken gevonden'
+        'norequests' => 'Geen verzoeken gevonden',
+        'choose-bank' => 'Kies je bank',
     ],
 
     'pay' => [

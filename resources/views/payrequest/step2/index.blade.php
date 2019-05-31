@@ -10,7 +10,7 @@
             <div class="articleflex">
                 <div class="article">
                     <div class="blockborder">
-                        <h1>Kies je bank</h1>
+                        <h1>{{__('messages.sentences.choose-bank')}}</h1>
                         <div class="buttons">
                             <a class="button large" href="{{route('finished')}}">{{__('messages.buttons.next')}}</a>
                         </div>

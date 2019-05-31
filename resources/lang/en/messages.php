@@ -82,7 +82,8 @@ return [
         'bankaccountrequired' => "A bank account is required!",
         'neverpaid' => 'This payment request has never been paid',
         'noactiverequests' => 'No active requests found',
-        'norequests' => 'No requests found'
+        'norequests' => 'No requests found',
+         'choose-bank' => 'Choose your bank',
     ],
 
     'pay' => [

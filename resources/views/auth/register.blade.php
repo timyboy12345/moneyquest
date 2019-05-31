@@ -126,7 +126,7 @@
                         <label for="requirements">{{__('messages.register.conditions')}}</label>
                     </div>
                 </div>
-                <input class="button" type="submit">
+                <input class="button" type="submit" value="{{__('messages.buttons.register')}}">
             </form>
         </div>
     </div>

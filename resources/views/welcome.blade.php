@@ -3,7 +3,7 @@
 @section('title', "MoneyQ - Home")
 
 @section('content')
-    <a href="/" class="title">MoneyQ</a>
+    <a href="{{route('home')}}" class="title">MoneyQ</a>
     <div class="wrapper">
         <div class="block wide">
             <h3>{{__('messages.welcome')}}</h3>

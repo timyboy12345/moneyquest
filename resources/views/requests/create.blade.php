@@ -3,7 +3,7 @@
 @section('title', "MoneyQ - Nieuw betaalverzoek")
 
 @section('content')
-    <a href="/" class="title">MoneyQ</a>
+    <a href="{{route('home')}}" class="title">MoneyQ</a>
     <div class="wrapper">
         <div class="block">
             @if ($bankaccounts->count() > 0)

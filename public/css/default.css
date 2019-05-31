@@ -213,7 +213,6 @@ h1, h2, h3 {
 
 
 .item {
-    background: #f7f7f7;
     -webkit-transition: background 0.2s;
     -moz-transition: background 0.2s;
     -ms-transition: background 0.2s;
@@ -221,14 +220,22 @@ h1, h2, h3 {
     transition: background 0.2s;
 }
 
-.item:hover {
-    background: #f2f2f2;
-}
-
 
 /* Items */
 .item.disabled {
     opacity: 0.5;
+}
+
+/* Blocks*/
+.blocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.blocks .item .bank {
+    width: 100px;
+    cursor: pointer;
 }
 
 /* Lijsten */
@@ -238,6 +245,7 @@ h1, h2, h3 {
 }
 
 .list .item {
+    background: #f7f7f7;
     border: 2px solid #f2f2f2;
     margin: 5px;
     padding: 5px;
@@ -245,6 +253,10 @@ h1, h2, h3 {
     -moz-border-radius: 3px;
     border-radius: 3px;
     overflow: hidden;
+}
+
+.list .item:hover {
+    background: #f2f2f2;
 }
 
 .list.wide .item {

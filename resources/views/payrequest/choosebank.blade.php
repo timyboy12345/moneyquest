@@ -7,7 +7,7 @@
     <div class="wrapper">
         <div class="block">
             <h3 class="text-center">{{__('messages.words.request')}}</h3>
-            <h1>Kies je bank</h1>
+            <h1>{{__('messages.sentences.choose-bank')}}</h1>
 
             <div class="blocks">
                 @foreach ($methods->issuers as $method)

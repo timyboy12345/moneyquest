@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="formline">
-                        <label for=description>{{__('messages.words.account')}}</label>
+                        <label for=description>{{__('messages.words.bankaccount')}}</label>
                         <select name="bankaccount" id="bankaccount">
                             @foreach ($bankaccounts as $account)
                                 <option value="{{$account->iban}}">{{$account->iban}}</option>

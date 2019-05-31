@@ -83,7 +83,7 @@ return [
         'neverpaid' => 'This payment request has never been paid',
         'noactiverequests' => 'No active requests found',
         'norequests' => 'No requests found',
-         'choose-bank' => 'Choose your bank',
+        'choose-bank' => 'Choose your bank',
     ],
 
     'pay' => [

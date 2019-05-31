@@ -7,7 +7,7 @@
     <div class="wrapper">
         <div class="column column-50">
             <div class="block">
-                <h3>Betaalverzoeken</h3>
+                <h3>{{__('messages.words.request')}}</h3>
                 <div class="list wide">
                     @if($requests->count() > 0)
                         @foreach ($requests as $request)

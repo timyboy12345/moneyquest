@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Payment;
 use App\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\MollieApiClient;
 
@@ -63,6 +66,7 @@ class RequestPaymentController extends Controller
                 "webhookUrl" => env("NGROK_ADDRESS") . "/payment/webhook/",
                 "metadata" => [
                     "request_id" => $request->id,
+                    "user_id" => Auth::user()->id,
                 ],
                 "method" => "ideal",
                 "issuer" => $issuer_id
@@ -76,5 +80,32 @@ class RequestPaymentController extends Controller
     public function Finished($id)
     {
         return view('payrequest/finished');
+    }
+
+    public function Webhook()
+    {
+        if (!isset($_POST['id']))
+            die('Please attach an ID');
+
+        try {
+            $mollie = new MollieApiClient;
+            $mollie->setApiKey(env('MOLLIE_API_KEY'));
+            $mollie_payment = $mollie->payments->get($_POST['id']);
+        } catch (ApiException $e) {
+        }
+
+        if (!isset($mollie_payment))
+            die('This payment was not found');
+
+        $request_id = Str::random(50);
+
+        $payment = Payment::create([
+            'id' => $request_id,
+            'request_id' => $mollie_payment->metadata->request_id,
+            'user_id' => $mollie_payment->metadata->user_id,
+            'mollie_payment_id' => $_POST['id']
+        ]);
+
+        response()->json(['success' => true], 200);
     }
 }

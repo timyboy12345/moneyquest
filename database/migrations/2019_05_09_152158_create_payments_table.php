@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->string('id')->primary();
             $table->string('request_id');
             $table->unsignedInteger('user_id');
+            $table->string('mollie_payment_id');
             $table->float('amount')->nullable();
 
             $table->timestamps();

@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Request;
+
 class RequestPaymentController extends Controller
 {
-    public function Index()
+    public function Index($id)
     {
-        return view('payrequest/index');
+        $request = Request::find($id);
+
+        if (!isset($request))
+            return redirect('home');
+
+        return view('payrequest/index', ['request'=>$request]);
     }
 
     public function Step2()

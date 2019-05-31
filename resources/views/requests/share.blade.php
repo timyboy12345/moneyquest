@@ -10,7 +10,7 @@
                 <h3 class="text-center">{{__('messages.words.request')}}</h3>
                 <p>{{$request->description}}</p>
 
-                <input type="text" value="{{env('NGROK_ADDRESS')}}/pay/{{$request->id}}" readonly>
+                <input class="copyinput" type="text" value="{{env('NGROK_ADDRESS')}}/pay/{{$request->id}}" readonly>
             </div>
         </div>
     </div>

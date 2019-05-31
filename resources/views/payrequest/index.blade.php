@@ -10,9 +10,9 @@
             <div class="articleflex">
                 <div class="article">
                     <div class="blockborder">
-                        <h1>piet vraag 5€ voor "een pilsie"</h1>
+                        <h1>{{$request->user->username}} {{__('pay.isasking')}} {{$request->amount}} {{__('pay.for')}} {{$request->description}}</h1>
                         <div class="buttons">
-                            <a class="button large" href="{{route('step2')}}">{{__('messages.buttons.ok')}}</a>
+                            <a class="button large" href="{{route('step2', $request->id)}}">{{__('messages.buttons.ok')}}</a>
                         </div>
                     </div>
                 </div>

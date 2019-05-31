@@ -19,37 +19,13 @@ Route::get('/', 'HomeController@Home')->name('home');
 
 Route::get('lang/{locale}', 'LocalizationController@index')->name('lang');
 
-Route::get('/login', 'LoginController@index')->name('login');
-Route::post('/login', 'LoginController@login')->name('login');
-
-Route::get('/register', 'RegisterController@index')->name('register');
+//Route::get('/login', 'LoginController@index')->name('login');
+//Route::post('/login', 'LoginController@login')->name('login');
+//Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::get('/main', 'MainpageController@index')->name('main');
 
-Route::get('/mollie', function () {
-    $payment_id = "12345";
-
-    $mollie = new MollieApiClient();
-    $mollie->setApiKey("test_dGjvGh2bqaVStDgJDGbeqnbqj2qJzm");
-
-    try {
-        $payment = $mollie->payments->create([
-            "amount" => [
-                "currency" => "EUR",
-                "value" => "10.00"
-            ],
-            "description" => "My first API payment",
-            "redirectUrl" => "http://127.0.0.1:8000/return/" . $payment_id,
-            "webhookUrl" => "http://127.0.0.1:8000/webhook/"
-        ]);
-
-//    $payment->getCheckoutUrl();
-        return redirect($payment->getCheckoutUrl());
-    } catch (Exception $e) {
-        info($e);
-        return view('mollie/error', ["error" => $e]);
-    }
-});
+Route::post('/payment/webhook', 'RequestPaymentController@Webhook');
 
 // Include authentication routes
 Auth::routes();

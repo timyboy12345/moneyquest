@@ -83,6 +83,10 @@ return [
         'neverpaid' => 'Dit betaalverzoek is nog nooit betaald',
         'noactiverequests' => 'Geen actieve verzoeken gevonden',
         'norequests' => 'Geen verzoeken gevonden'
-    ]
+    ],
 
+    'pay' => [
+        'for' => 'voor',
+        'is-asking' => 'vraagt',
+    ]
 ];

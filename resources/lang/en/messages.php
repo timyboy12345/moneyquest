@@ -82,5 +82,10 @@ return [
         'neverpaid' => 'This payment request has never been paid',
         'noactiverequests' => 'No active requests found',
         'norequests' => 'No requests found'
+    ],
+
+    'pay' => [
+        'for' => 'for',
+        'is-asking' => 'is asking',
     ]
 ];

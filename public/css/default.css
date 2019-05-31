@@ -3,6 +3,11 @@
     --primary-dark: #2f0aa8;
 }
 
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
 html, body {
     padding: 0px;
     margin: 0px;
@@ -48,7 +53,7 @@ html, body {
 }
 
 .column-50 {
-    max-width: 48%;
+    max-width: 50%;
 }
 
 .block {
@@ -155,6 +160,14 @@ h1, h2, h3 {
     text-align: center;
 }
 
+.text-purple {
+    color: #6f28ff;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
 .footer {
     width: 100%;
     height: 100px;
@@ -196,13 +209,86 @@ h1, h2, h3 {
 }
 
 
+.item {
+    background: #f7f7f7;
+    -webkit-transition: background 0.2s;
+    -moz-transition: background 0.2s;
+    -ms-transition: background 0.2s;
+    -o-transition: background 0.2s;
+    transition: background 0.2s;
+}
+
+.item:hover {
+    background: #f2f2f2;
+}
+
+
+/* Lijsten */
+.list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list .item {
+    border: 2px solid #f2f2f2;
+    margin: 5px;
+    padding: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.list.wide .item {
+    width: 100%;
+    position: relative;
+}
+
+.list .item .secondary {
+    max-height: 0;
+    -webkit-transition: max-height 0.3s;
+    -moz-transition: max-height 0.3s;
+    -ms-transition: max-height 0.3s;
+    -o-transition: max-height 0.3s;
+    transition: max-height 0.3s;
+}
+
+.list .item:hover .secondary {
+    max-height: 22px;
+}
+
+.list a.item::after {
+    content: '\f061';
+    font-family: 'FontAwesome';
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 8px);
+    color: #2f0aa8;
+
+    -webkit-transition: right 0.3s;
+    -moz-transition: right 0.3s;
+    -ms-transition: right 0.3s;
+    -o-transition: right 0.3s;
+    transition: right 0.3s;
+}
+
+.list a.item:hover::after {
+    right: 5px;
+}
 
 
 .margin-top {
     margin-top: 10px;
 }
+
 .margin-bottom {
     margin-bottom: 10px;
+}
+
+@media all and (max-width: 900px) {
+    .wrapper {
+        width: 95%;
+    }
 }
 
 @media all and (max-width: 750px) {

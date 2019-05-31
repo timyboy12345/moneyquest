@@ -27,7 +27,9 @@ return [
         'cancel' => 'Cancel',
         'createrequest' => 'Create request',
         'ok' => 'Okay',
-        'next' => "Next"
+        'next' => "Next",
+        'disable' => 'Disable',
+        'createrequest' => 'Create request'
     ],
 
     'requests' => [
@@ -42,7 +44,11 @@ return [
         'amount' => 'Amount',
         'description' => "Description",
         'bankaccount' => "Bank account",
-        'request' => 'Payment request'
+        'request' => 'Payment request',
+        'payments' => "Payments",
+        'disabled' => "Disabled",
+        'active' => "Active",
+        'state' => "State"
     ],
 
     'register' => [
@@ -67,5 +73,10 @@ return [
     'dashboard' => [
         "youraccounts" => "Your bank accounts",
         "manageaccounts" => "Manage your bank accounts"
+    ],
+
+    'sentences' => [
+        'bankaccountrequired' => "A bank account is required!",
+        'neverpaid' => 'This payment request has never been paid'
     ]
 ];

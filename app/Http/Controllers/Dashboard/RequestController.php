@@ -73,7 +73,7 @@ class RequestController extends Controller
         $request = \App\Request::find($id);
 
         if (!$request->active)
-            return redirect('request', $request->id);
+            return redirect(route('request', $request->id));
 
         return view('requests/share', ['request' => $request]);
     }

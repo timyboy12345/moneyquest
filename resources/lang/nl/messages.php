@@ -85,6 +85,7 @@ return [
         'noactiverequests' => 'Geen actieve verzoeken gevonden',
         'norequests' => 'Geen verzoeken gevonden',
         'choose-bank' => 'Kies je bank',
+        'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd'
     ],
 
     'pay' => [

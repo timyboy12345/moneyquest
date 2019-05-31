@@ -44,10 +44,8 @@ class BankaccountController extends Controller
     {
         $account = BankAccount::where([['iban', $account], ['user_id', Auth::user()->id]])->first();
 
-        if (!isset($account))
-            return back()->withErrors(['']);
-
-        $account->delete();
+        if ($account->canDelete())
+            $account->delete();
 
         return redirect(route('bankaccounts'));
     }

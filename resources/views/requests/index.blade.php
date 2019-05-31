@@ -23,7 +23,9 @@
 
                     <div class="formline">
                         <label for=description>{{__('messages.words.state')}}</label>
-                        <input disabled value="{{[__("messages.words.disabled"), __("messages.words.active")][$request->active]}}" type="text" id="description">
+                        <input disabled
+                               value="{{[__("messages.words.disabled"), __("messages.words.active")][$request->active]}}"
+                               type="text" id="description">
                     </div>
                 </form>
             </div>
@@ -36,7 +38,7 @@
                     <div class="list">
                         @foreach ($payments as $payment)
                             <div class="item">
-                                {{$payment}}
+                                {{$payment->user->username}} &euro;{{  $payment->amount ?: $request->amount }}
                             </div>
                         @endforeach
                     </div>
@@ -49,8 +51,10 @@
                 <a class="button small light" href="{{route('home')}}">{{__('messages.buttons.home')}}</a>
 
                 @if ($request->active)
-                    <a class="button small light" href="{{route('sharerequest', $request->id)}}">{{__('messages.buttons.sharerequest')}}</a>
-                    <a class="button small light" href="{{route('disablerequest', $request->id)}}">{{__('messages.buttons.disable')}}</a>
+                    <a class="button small light"
+                       href="{{route('sharerequest', $request->id)}}">{{__('messages.buttons.sharerequest')}}</a>
+                    <a class="button small light"
+                       href="{{route('disablerequest', $request->id)}}">{{__('messages.buttons.disable')}}</a>
                 @endif
             </div>
         </div>

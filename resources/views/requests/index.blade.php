@@ -45,7 +45,8 @@
                 @endif
             </div>
             <div class="buttons stretch">
-                <a class="button small light" href="{{route('main')}}">{{__('messages.buttons.back')}}</a>
+                <a class="button small light" href="{{route('requests')}}">{{__('messages.buttons.allrequests')}}</a>
+                <a class="button small light" href="{{route('home')}}">{{__('messages.buttons.home')}}</a>
 
                 @if ($request->active)
                     <a class="button small light" href="{{route('disablerequest', $request->id)}}">{{__('messages.buttons.disable')}}</a>

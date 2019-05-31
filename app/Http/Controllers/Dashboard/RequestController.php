@@ -11,6 +11,11 @@ use Illuminate\Support\Str;
 
 class RequestController extends Controller
 {
+    public function List(Request $r)
+    {
+        return view('requests/list', ['requests' => \App\Request::all()]);
+    }
+
     public function Read($id, Request $r)
     {
         $request = \App\Request::find($id);
@@ -25,7 +30,7 @@ class RequestController extends Controller
     {
         $bankaccounts = BankAccount::where("user_id", Auth::user()->id)->get();
 
-        return view('requests/new/index', ['bankaccounts' => $bankaccounts]);
+        return view('requests/create', ['bankaccounts' => $bankaccounts]);
     }
 
     public function CreatePost(Request $r)
@@ -51,7 +56,8 @@ class RequestController extends Controller
         return redirect(route('request', $request_id));
     }
 
-    public function Disable($id) {
+    public function Disable($id)
+    {
         $request = \App\Request::find($id);
 
         if (!isset($request)) return redirect(route('dashboard'));

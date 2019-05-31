@@ -29,7 +29,9 @@ return [
         'createrequest' => 'Betaalverzoek aanmaken',
         'ok' => 'Oké',
         'next' => "Volgende",
-        'disable' => 'Uitschakelen'
+        'disable' => 'Uitschakelen',
+        'delete' => 'Verwijderen',
+        'home' => 'Home',
     ],
 
     'requests' => [
@@ -77,7 +79,9 @@ return [
 
     'sentences' => [
         'bankaccountrequired' => "Je moet een bankaccount aan je MoneyQuest-account toevoegen!",
-        'neverpaid' => 'Dit betaalverzoek is nog nooit betaald'
+        'neverpaid' => 'Dit betaalverzoek is nog nooit betaald',
+        'noactiverequests' => 'Geen actieve verzoeken gevonden',
+        'norequests' => 'Geen verzoeken gevonden'
     ]
 
 ];

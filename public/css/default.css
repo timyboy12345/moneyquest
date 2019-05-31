@@ -8,9 +8,14 @@ a {
     color: inherit;
 }
 
+a:not(.button .title) {
+    color: #2f0aa8;
+    text-decoration: underline;
+}
+
 html, body {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     width: 100%;
     min-height: calc(100% - 50px);
     top: 0;
@@ -64,7 +69,6 @@ html, body {
     -moz-border-radius: 3px;
     border-radius: 3px;
     margin: 5px;
-    flex-grow: 1;
 }
 
 .block.wide {
@@ -72,7 +76,7 @@ html, body {
     width: 100%;
 }
 
-.blockborder{
+.blockborder {
     flex-grow: 1;
     padding: 15px;
     background: #f7f7f7;
@@ -80,17 +84,16 @@ html, body {
     -moz-border-radius: 3px;
     border-radius: 3px;
     margin: 5px;
-    flex-grow: 1;
     border: 2px solid #f2f2f2;
     min-height: 200px;
     text-align: center;
 }
 
-.blockborder h1{
+.blockborder h1 {
     font-size: 24px;
 }
 
-.blockborder .buttons{
+.blockborder .buttons {
     padding-top: 200px;
     justify-content: flex-end;
 }
@@ -178,7 +181,7 @@ h1, h2, h3 {
 .footer .wrapper {
     background: white;
     width: 100%;
-    bottom: 0px;
+    bottom: 0;
     position: absolute;
     box-shadow: 0 0 20px var(--primary-dark);
 }
@@ -222,6 +225,11 @@ h1, h2, h3 {
     background: #f2f2f2;
 }
 
+
+/* Items */
+.item.disabled {
+    opacity: 0.5;
+}
 
 /* Lijsten */
 .list {

@@ -29,7 +29,8 @@ return [
         'ok' => 'Okay',
         'next' => "Next",
         'disable' => 'Disable',
-        'createrequest' => 'Create request'
+        'delete' => 'Delete',
+        'home'=>'Home',
     ],
 
     'requests' => [
@@ -77,6 +78,8 @@ return [
 
     'sentences' => [
         'bankaccountrequired' => "A bank account is required!",
-        'neverpaid' => 'This payment request has never been paid'
+        'neverpaid' => 'This payment request has never been paid',
+        'noactiverequests' => 'No active requests found',
+        'norequests' => 'No requests found'
     ]
 ];

@@ -9,12 +9,17 @@
             <div class="block">
                 <h3>Betaalverzoeken</h3>
                 <div class="list wide">
-                    @foreach ($requests as $request)
-                        <a href="{{route('request', ["id"=>$request->id])}}" class="item">
-                            <div class="primary text-purple text-bold">{{$request->description}} - &euro;{{$request->amount}}</div>
-                            <div class="secondary">{{$request->bank_iban}}</div>
-                        </a>
-                    @endforeach
+                    @if($requests->count() > 0)
+                        @foreach ($requests as $request)
+                            <a href="{{route('request', ["id"=>$request->id])}}" class="item">
+                                <div class="primary text-purple text-bold">{{$request->description}} -
+                                    &euro;{{$request->amount}}</div>
+                                <div class="secondary">{{$request->bank_iban}}</div>
+                            </a>
+                        @endforeach
+                    @else
+                        <p>{{__('messages.sentences.noactiverequests')}}</p>
+                    @endif
                 </div>
             </div>
         </div>

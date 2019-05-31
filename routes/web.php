@@ -26,10 +26,6 @@ Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::get('/main', 'MainpageController@index')->name('main');
 
-Route::get('/pay/{id}', 'RequestPaymentController@index')->name('pay');
-Route::get('/pay/{id}/bank', 'RequestPaymentController@step2')->name('step2');
-Route::get('/finished', 'RequestPaymentController@finished')->name('finished');
-
 Route::get('/mollie', function () {
     $payment_id = "12345";
 
@@ -79,6 +75,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/requests/create/', 'Dashboard\RequestController@Create')->name('createrequest');
     Route::post('/requests/create/', 'Dashboard\RequestController@CreatePost');
+
+    Route::get('/pay/{id}', 'RequestPaymentController@index')->name('pay');
+    Route::get('/pay/{id}/bank', 'RequestPaymentController@step2')->name('pay_choosebank');
+    Route::get('/pay/{id}/finish', 'RequestPaymentController@Finished')->name('finished');
+    Route::get('/pay/{id}/{bank}', 'RequestPaymentController@step3')->name('pay_createrequest');
 
     // Logout
     Route::get('/logout', 'LoginController@Logout')->name('logout');

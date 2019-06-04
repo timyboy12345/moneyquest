@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\BankAccount;
 use App\Http\Controllers\Controller;
 use App\Payment;
+use App\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -24,8 +25,9 @@ class RequestController extends Controller
             return redirect(route('dashboard'));
         }
 
+        $subscriptions = Subscription::where(['request_id' => $id, 'state' => 'active'])->get();
         $payments = Payment::where('request_id', $id)->get();
-        return view('requests/index', ['request' => $request, 'payments' => $payments]);
+        return view('requests/index', ['request' => $request, 'payments' => $payments, 'subscriptions' => $subscriptions]);
     }
 
     public function create(Request $r)
@@ -42,7 +44,7 @@ class RequestController extends Controller
         $r->validate(
             [
                 'quantity' => 'required|numeric|between:0,50000',
-                'description' => 'required|min:3|max:25',
+                'description' => 'required|min:3|max:160',
                 'bankaccount' => 'required'
             ]
         );

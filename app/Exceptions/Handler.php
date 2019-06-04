@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Google\Cloud\ErrorReporting\Bootstrap;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -29,12 +30,19 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
+     * @throws Exception
      */
     public function report(Exception $exception)
     {
-        parent::report($exception);
+        if (isset($_SERVER['GAE_SERVICE'])) {
+            // Ensure Stackdriver is initialized and handle the exception
+            Bootstrap::init();
+            Bootstrap::exceptionHandler($exception);
+        } else {
+            parent::report($exception);
+        }
     }
 
     /**

@@ -11,19 +11,15 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Mollie\Api\MollieApiClient;
 
 
-Route::get('/', 'HomeController@Home')->name('home');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', 'HomeController@Home')->name('home');
+});
 
 Route::get('lang/{locale}', 'LocalizationController@index')->name('lang');
-
-//Route::get('/login', 'LoginController@index')->name('login');
-//Route::post('/login', 'LoginController@login')->name('login');
-//Route::get('/register', 'RegisterController@index')->name('register');
-
-Route::get('/main', 'MainpageController@index')->name('main');
 
 Route::post('/payment/webhook', 'RequestPaymentController@Webhook');
 
@@ -51,6 +47,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/requests/create/', 'Dashboard\RequestController@create')->name('createrequest');
     Route::post('/requests/create/', 'Dashboard\RequestController@createPost');
+
+    Route::get('/pay/{id}/schedule', 'ScheduleController@index')->name('schedule');
+    Route::post('/pay/{id}/schedule/', 'ScheduleController@indexPost')->name('schedule-calendar');
+    Route::get('/pay/{id}/schedule/finish/{subscription_id}', 'ScheduleController@success')->name('schedule-success');
 
     Route::get('/pay/{id}', 'RequestPaymentController@index')->name('pay');
     Route::get('/pay/{id}/bank', 'RequestPaymentController@step2')->name('pay_choosebank');

@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="buttons stretch margin-top">
-                        <a class="button small" href="{{route('main')}}">{{__('messages.buttons.cancel')}}</a>
+                        <a class="button small" href="{{route('dashboard')}}">{{__('messages.buttons.cancel')}}</a>
                         <input type="submit" style="margin: 5px; width: initial;" class="button small"
                                value="{{__('messages.buttons.createrequest')}}" href="">
                     </div>

@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function __construct()
-    {
-        $this->setLocale();
-        $this->middleware('guest', ['except' => 'Logout']);
-    }
-
     public function index()
     {
         return view('login/index');
@@ -49,10 +43,8 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard()->logout();
-
         $request->session()->invalidate();
 
-        //        return $this->loggedOut($request) ?: redirect('/');
         return redirect('/');
     }
 

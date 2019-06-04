@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\App;
 
 class Controller extends BaseController
 {
+    public function __construct()
+    {
+        $this->setLocale();
+    }
+
     public function setLocale()
     {
         if (!isset($_COOKIE['lang'])) {

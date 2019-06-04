@@ -59,4 +59,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Logout
     Route::get('/logout', 'LoginController@logout')->name('logout');
+
+    //mail
+    Route::get('/mail/{id}', 'MailController@SendMail')->name('sendmail');
 });

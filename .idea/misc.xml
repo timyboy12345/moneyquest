@@ -20,4 +20,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/resources/views/emails/request.php" />
+  </component>
 </project>

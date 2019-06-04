@@ -26,13 +26,14 @@
                         <input disabled value="{{$request->description}}" type="text" id="description">
                     </div>
 
-                    <div class="formline">
-                        <label for=description>{{__('messages.words.image')}}</label>
+                    @if($request->image != null)
+                        <div class="formline">
+                            <label for=description>{{__('messages.words.image')}}</label>
+                        </div>
+                        <img class="image" src="{{Storage::url($request->image)}}"/>
+                    @else
 
-                    </div>
-
-                    <img class="image" src="{{Storage::url($request->image)}}"/>
-
+                    @endif
 
                     <div class="formline">
                         <label for=description>{{__('messages.words.comment')}}</label>

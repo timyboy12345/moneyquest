@@ -8,13 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    function __construct()
-    {
-        $this->setLocale();
-        $this->middleware('auth');
-    }
-
-    function Home()
+    public function home()
     {
         $bankAccounts = BankAccount::all()->where('user_id', Auth::user()->id);
         $requests = \App\Request::where('user_id', Auth::user()->id)->where('active', 1)->take(5)->get();

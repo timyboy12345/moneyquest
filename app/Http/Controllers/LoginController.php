@@ -3,25 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-
-    function __construct()
-    {
-        $this->setLocale();
-        $this->middleware('guest', ['except' => 'Logout']);
-    }
-
-    public function Index()
+    public function index()
     {
         return view('login/index');
     }
 
-    public function Login()
+    public function login()
     {
         $errors = array();
 
@@ -33,11 +25,13 @@ class LoginController extends Controller
         if (sizeof($errors) == 0) {
             $user = User::all()->where("email", $_POST['email'])->first();
 
-            if (!isset($user))
+            if (!isset($user)) {
                 return view('login/index')->with(compact('user'))->withErrors(['email' => "Email niet gevonden"]);
+            }
 
-            if (!password_verify($_POST['password'], $user['password']))
+            if (!password_verify($_POST['password'], $user['password'])) {
                 return view('login/index')->with(compact('user'))->withErrors(['password' => "Wachtwoord incorrect"]);
+            }
 
             Auth::login($user);
             return redirect('/home');
@@ -46,13 +40,11 @@ class LoginController extends Controller
         return view('login/index')->with(compact('user'))->withErrors($errors);
     }
 
-    public function Logout(Request $request)
+    public function logout(Request $request)
     {
         $this->guard()->logout();
-
         $request->session()->invalidate();
 
-//        return $this->loggedOut($request) ?: redirect('/');
         return redirect('/');
     }
 

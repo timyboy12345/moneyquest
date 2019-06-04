@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
-    public function Read() {
+    public function read()
+    {
         return view('account/index');
     }
 
-    public function Delete() {
+    public function delete()
+    {
         $account = User::find(Auth::user()->id);
 
         $account->delete();

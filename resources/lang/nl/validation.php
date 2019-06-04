@@ -38,6 +38,7 @@ return [
     'digits_between'       => ':attribute moet bestaan uit minimaal :min en maximaal :max cijfers.',
     'dimensions'           => ':attribute heeft geen geldige afmetingen voor afbeeldingen.',
     'distinct'             => ':attribute heeft een dubbele waarde.',
+    'double'               => 'je mag geen dubbele gegevens invullen',
     'email'                => ':attribute is geen geldig e-mailadres.',
     'exists'               => ':attribute bestaat niet.',
     'file'                 => ':attribute moet een bestand zijn.',
@@ -175,6 +176,7 @@ return [
         'title'                 => 'titel',
         'username'              => 'gebruikersnaam',
         'year'                  => 'jaar',
-        'quantity'              => 'Hoeveelheid'
+        'quantity'              => 'Hoeveelheid',
+        'payments'              => 'betalingen'
     ],
 ];

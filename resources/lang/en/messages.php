@@ -27,12 +27,15 @@ return [
         'cancel' => 'Cancel',
         'createrequest' => 'Create request',
         'ok' => 'Okay',
+        'paynow' => 'Pay now',
         'next' => "Next",
         'disable' => 'Disable',
         'delete' => 'Delete',
         'home' => 'Home',
         'sharerequest' => 'Share request',
         'delete-account' => 'Delete account',
+        'schedule' => 'Plan payments',
+        'continue' => 'Continue'
     ],
 
     'requests' => [
@@ -87,7 +90,8 @@ return [
         'noactiverequests' => 'No active requests found',
         'norequests' => 'No requests found',
         'choose-bank' => 'Choose your bank',
-        'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd'
+        'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd',
+        'number-of-payments' => 'Number of payments'
     ],
 
     'pay' => [

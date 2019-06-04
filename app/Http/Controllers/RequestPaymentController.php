@@ -11,22 +11,24 @@ use Mollie\Api\MollieApiClient;
 
 class RequestPaymentController extends Controller
 {
-    public function Index($id)
+    public function index($id)
     {
         $request = Request::find($id);
 
-        if (!isset($request))
+        if (!isset($request)) {
             return redirect('home');
+        }
 
         return view('payrequest/index', ['request' => $request]);
     }
 
-    public function Step2($id)
+    public function step2($id)
     {
         $request = Request::find($id);
 
-        if (!isset($request))
+        if (!isset($request)) {
             return redirect('home');
+        }
 
         try {
             $mollie = new MollieApiClient;
@@ -39,15 +41,17 @@ class RequestPaymentController extends Controller
         return view('payrequest/choosebank', ['request' => $request, 'methods' => $methods]);
     }
 
-    public function Step3($id, $issuer_id)
+    public function step3($id, $issuer_id)
     {
         $request = Request::find($id);
 
-        if (!isset($request))
+        if (!isset($request)) {
             return redirect('home');
+        }
 
-        if (env('NGROK_ADDRESS') == null || env('NGROK_ADDRESS') == "")
+        if (env('NGROK_ADDRESS') == null || env('NGROK_ADDRESS') == "") {
             die('Please enter a valid HTTP address in the env');
+        }
 
         try {
             $mollie = new MollieApiClient;
@@ -56,7 +60,8 @@ class RequestPaymentController extends Controller
         }
 
         try {
-            $payment = $mollie->payments->create([
+            $payment = $mollie->payments->create(
+                [
                 "amount" => [
                     "currency" => "EUR",
                     "value" => number_format($request->amount, 2, ".", "")
@@ -70,22 +75,24 @@ class RequestPaymentController extends Controller
                 ],
                 "method" => "ideal",
                 "issuer" => $issuer_id
-            ]);
+                ]
+            );
 
             return redirect($payment->getCheckoutUrl());
         } catch (ApiException $e) {
         }
     }
 
-    public function Finished($id)
+    public function finished($id)
     {
         return view('payrequest/finished');
     }
 
-    public function Webhook()
+    public function webhook()
     {
-        if (!isset($_POST['id']))
+        if (!isset($_POST['id'])) {
             die('Please attach an ID');
+        }
 
         try {
             $mollie = new MollieApiClient;
@@ -94,17 +101,20 @@ class RequestPaymentController extends Controller
         } catch (ApiException $e) {
         }
 
-        if (!isset($mollie_payment))
+        if (!isset($mollie_payment)) {
             die('This payment was not found');
+        }
 
         $request_id = Str::random(50);
 
-        $payment = Payment::create([
+        $payment = Payment::create(
+            [
             'id' => $request_id,
             'request_id' => $mollie_payment->metadata->request_id,
             'user_id' => $mollie_payment->metadata->user_id,
             'mollie_payment_id' => $_POST['id']
-        ]);
+            ]
+        );
 
         response()->json(['success' => true], 200);
     }

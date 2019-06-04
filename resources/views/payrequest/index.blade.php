@@ -19,6 +19,11 @@
                                href="{{route('pay_choosebank', $request->id)}}">{{__('messages.buttons.ok')}}</a>
                         </div>
                     </div>
+        <div class="column">
+            <div class="block">
+                <div class="buttons">
+                    <a class="button" href="{{route('schedule', $request->id)}}">{{__('messages.buttons.schedule')}}</a>
+                    <a class="button" href="{{route('pay_choosebank', $request->id)}}">{{__('messages.buttons.paynow')}}</a>
                 </div>
             </div>
         </div>

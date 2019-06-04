@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Auth;
 class BankaccountController extends Controller
 {
     // List function
-    public function Read()
+    public function read()
     {
         $bankAccounts = BankAccount::all()->where('user_id', Auth::user()->id);
         return view('dashboard/bankaccounts', ['bank_accounts' => $bankAccounts]);
     }
 
     // Create function
-    public function Create()
+    public function create()
     {
         $account = new BankAccount();
 
@@ -40,12 +40,13 @@ class BankaccountController extends Controller
     }
 
     // Delete function
-    public function Delete($account)
+    public function delete($account)
     {
         $account = BankAccount::where([['iban', $account], ['user_id', Auth::user()->id]])->first();
 
-        if ($account->canDelete())
+        if ($account->canDelete()) {
             $account->delete();
+        }
 
         return redirect(route('bankaccounts'));
     }

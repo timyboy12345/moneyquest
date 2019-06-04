@@ -28,12 +28,15 @@ return [
         'cancel' => 'Annuleren',
         'createrequest' => 'Betaalverzoek aanmaken',
         'ok' => 'Oké',
+        'paynow' => 'Betaal nu',
         'next' => "Volgende",
         'disable' => 'Uitschakelen',
         'delete' => 'Verwijderen',
         'home' => 'Home',
         'sharerequest' => 'Deel betaalverzoek',
         'delete-account' => 'Account verwijderen',
+        'schedule' => 'Betalingen plannen',
+        'continue' => 'Doorgaan'
     ],
 
     'requests' => [
@@ -88,7 +91,8 @@ return [
         'noactiverequests' => 'Geen actieve verzoeken gevonden',
         'norequests' => 'Geen verzoeken gevonden',
         'choose-bank' => 'Kies je bank',
-        'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd'
+        'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd',
+        'number-of-payments'=>'Aantal betalingen'
     ],
 
     'pay' => [

@@ -94,8 +94,16 @@ html, body {
 }
 
 .blockborder .buttons {
-    padding-top: 200px;
     justify-content: flex-end;
+}
+
+.blockborder .image {
+    width: 20%;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
 }
 
 /* buttons */

@@ -10,7 +10,10 @@
             <div class="articleflex">
                 <div class="article">
                     <div class="blockborder">
-                        <h1>{{$request->user->username}} {{__('messages.pay.is-asking')}} {{$request->amount}} {{__('messages.pay.for')}} {{$request->description}}</h1>
+                        <h1>{{$request->user->username}} {{__('messages.pay.is-asking')}} {{$request->amount}} {{$request->currency}} {{__('messages.pay.for')}} {{$request->description}}</h1>
+                        <h3>{{__('messages.pay.date')}}{{$request->updated_at}}</h3>
+                        <img class="image" src="{{Storage::url($request->image)}}"/>
+                        <p>{{$request->comment}}</p>
                         <div class="buttons">
                             <a class="button large"
                                href="{{route('pay_choosebank', $request->id)}}">{{__('messages.buttons.ok')}}</a>

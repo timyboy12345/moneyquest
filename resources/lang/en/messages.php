@@ -51,7 +51,10 @@ return [
         'payments' => "Payments",
         'disabled' => "Disabled",
         'active' => "Active",
-        'state' => "State"
+        'state' => "State",
+        'comment' => "Note",
+        'currency' => "Currency",
+        'image' => "Image"
     ],
 
     'register' => [
@@ -90,5 +93,6 @@ return [
     'pay' => [
         'for' => 'for',
         'is-asking' => 'is asking',
+        'date' => 'Date: '
     ]
 ];

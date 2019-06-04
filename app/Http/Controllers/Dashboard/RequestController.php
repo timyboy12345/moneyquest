@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+
+
+
+
 class RequestController extends Controller
 {
     public function List(Request $r)
@@ -33,25 +37,31 @@ class RequestController extends Controller
         return view('requests/create', ['bankaccounts' => $bankaccounts]);
     }
 
-    public function CreatePost(Request $r)
+    public function CreatePost(Request $request)
     {
         $request_id = Str::random(50);
 
-        $r->validate([
+        $request->validate([
             'quantity' => 'required|numeric|between:0,50000',
             'description' => 'required|min:3|max:25',
             'bankaccount' => 'required'
         ]);
 
-        $request = new \App\Request([
+        $newrequest = new \App\Request([
             "id" => $request_id,
             "user_id" => Auth::user()->id,
-            "amount" => $r->input('quantity'),
-            "description" => $r->input('description'),
-            "bank_iban" => $r->input('bankaccount')
+            "amount" => $request->input('quantity'),
+            "description" => $request->input('description'),
+            "bank_iban" => $request->input('bankaccount'),
+            "currency" => $request->input('currency'),
+            "comment" => $request->input('comment'),
         ]);
 
-        $request->save();
+        if($request->hasFile('image')){
+            $newrequest->image = RequestController::SaveFeatured($request);
+        }
+
+        $newrequest->save();
 
         return redirect(route('request', $request_id));
     }
@@ -76,5 +86,9 @@ class RequestController extends Controller
             return redirect(route('request', $request->id));
 
         return view('requests/share', ['request' => $request]);
+    }
+
+    private static function SaveFeatured(Request $request){
+        return $request->file('image')->store('public');
     }
 }

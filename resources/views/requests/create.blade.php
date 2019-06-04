@@ -8,7 +8,7 @@
         <div class="block">
             @if ($bankaccounts->count() > 0)
                 <h3 class="text-center">{{__('messages.buttons.newrequest')}}</h3>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="formline">
@@ -46,6 +46,21 @@
                                         <strong>{{ $errors->first('bankaccount') }}</strong>
                                     </span>
                         @endif
+                    </div>
+
+                    <div class="formline">
+                        <label for=description>{{__('messages.words.comment')}}</label>
+                        <textarea value="{{old('comment')}}" type="text" name="comment" id="comment"></textarea>
+                    </div>
+
+                    <div class="formline">
+                        <label for=description>{{__('messages.words.currency')}}</label>
+                        <input value="{{old('comment')}}" type="text" name="currency" id="currency">
+                     </div>
+
+                    <div class="formline">
+                        <label for="image">{{__('messages.words.image')}}</label>
+                        <input type="file" name="image" id="image">
                     </div>
 
                     <div class="buttons stretch margin-top">

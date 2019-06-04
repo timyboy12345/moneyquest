@@ -52,7 +52,10 @@ return [
         'payments' => "Betalingen",
         'disabled' => "Uitgeschakeld",
         'active' => "Actief",
-        'state' => "Status"
+        'state' => "Status",
+        'comment' => "Notitie",
+        'currency' => "Valuta",
+        'image' => "Afbeelding"
     ],
 
     'register' => [
@@ -91,5 +94,6 @@ return [
     'pay' => [
         'for' => 'voor',
         'is-asking' => 'vraagt',
+        'date' => 'Datum: '
     ]
 ];

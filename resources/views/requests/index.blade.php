@@ -17,8 +17,26 @@
                     </div>
 
                     <div class="formline">
+                        <label for=description>{{__('messages.words.currency')}}</label>
+                        <input disabled value="{{$request->currency}}" type="text" id="description">
+                    </div>
+
+                    <div class="formline">
                         <label for=description>{{__('messages.words.description')}}</label>
                         <input disabled value="{{$request->description}}" type="text" id="description">
+                    </div>
+
+                    <div class="formline">
+                        <label for=description>{{__('messages.words.image')}}</label>
+
+                    </div>
+
+                    <img class="image" src="{{Storage::url($request->image)}}"/>
+
+
+                    <div class="formline">
+                        <label for=description>{{__('messages.words.comment')}}</label>
+                        <input disabled value="{{$request->comment}}" type="text" id="description">
                     </div>
 
                     <div class="formline">
@@ -27,6 +45,8 @@
                                value="{{[__("messages.words.disabled"), __("messages.words.active")][$request->active]}}"
                                type="text" id="description">
                     </div>
+
+
                 </form>
             </div>
         </div>

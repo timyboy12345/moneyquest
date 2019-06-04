@@ -65,5 +65,9 @@ form .hint{
     color: grey;
 }
 
+form .image{
+    width: 20%;
+}
+
 
 

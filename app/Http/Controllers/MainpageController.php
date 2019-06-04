@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 
 class MainpageController extends Controller
 {
-    function __construct()
+    public function __construct()
     {
         $this->setLocale();
         $this->middleware('guest');
     }
 
-    public function Index() {
+    public function index()
+    {
         return view('usermainpage/index');
     }
 }

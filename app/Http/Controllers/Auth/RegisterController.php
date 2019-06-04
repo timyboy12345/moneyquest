@@ -44,12 +44,14 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return Validator::make(
+            $data,
+            [
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -58,18 +60,20 @@ class RegisterController extends Controller
             'familyname' => ['required', 'string', 'max:255'],
             'birthdate' => ['required', 'string', 'max:255'],
             'phonenumber' => ['required', 'string', 'max:20'],
-        ]);
+            ]
+        );
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::create(
+            [
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -78,6 +82,7 @@ class RegisterController extends Controller
             'familyname' => $data['familyname'],
             'birthdate' => $data['birthdate'],
             'phonenumber' => $data['phonenumber'],
-        ]);
+            ]
+        );
     }
 }

@@ -7,12 +7,7 @@ use Illuminate\Support\Facades\App;
 
 class Controller extends BaseController
 {
-    function __construct()
-    {
-        $this->setLocale();
-    }
-
-    function setLocale()
+    public function setLocale()
     {
         if (!isset($_COOKIE['lang'])) {
             setcookie('lang', $this->getBrowserLocale(), time() + 60 * 60 * 24 * 30, "/");
@@ -24,7 +19,7 @@ class Controller extends BaseController
         App::setLocale($lang);
     }
 
-    function getBrowserLocale()
+    public function getBrowserLocale()
     {
         // Check if the browser send the languages
         if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
@@ -38,7 +33,8 @@ class Controller extends BaseController
                 // Optional quality factor M3 ;q=, M4 - Quality Factor
                 '(;\s*q\s*=\s*((1(\.0{0,3}))|(0(\.[0-9]{0,3}))))?/i',
                 $_SERVER['HTTP_ACCEPT_LANGUAGE'],
-                $langParse);
+                $langParse
+            );
 
             $langs = $langParse[1]; // M1 - First part of language
             $quals = $langParse[4]; // M4 - Quality Factor

@@ -91,7 +91,7 @@ return [
         'noactiverequests' => 'No active requests found',
         'norequests' => 'No requests found',
         'choose-bank' => 'Choose your bank',
-        'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd',
+        'bankaccountnodelete' => 'This bankaccount can not be deleted',
         'number-of-payments' => 'Number of payments',
         'email-lang' => 'Email language'
     ],

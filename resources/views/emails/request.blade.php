@@ -120,7 +120,7 @@
                                                 Beste {{($user->username)}}
                                                 <br><br/>
                                                 Je hebt zojuist een betaal verzoek van {{($user = DB::table('users')->find($request->user_id)->username)}} ontvangen:
-                                                {{($request->id)}}
+                                                <a href="{{($url)}}/pay/{{($request->id)}}"> {{($url)}}/pay/{{($request->id)}}</a>
                                                 <br><br/>
                                                 Het MoneyQuest Team.
                                             </p>

@@ -112,8 +112,10 @@ class RequestController extends Controller
             $view = 'emails.request';
         }
 
+        $url = url('/');
+
         if($user != null) {
-            Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
+            Mail::send($view, ['user' => $user, 'request' => $request, 'url'=> $url], function ($m) use ($user) {
                 $m->from('hello@app.com', 'MoneyQuest');
 
                 $m->to($user->email, $user->name)->subject('Nieuw betaalverzoek!');

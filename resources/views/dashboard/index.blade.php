@@ -43,7 +43,7 @@
                 <a class="light large" href="{{route('createrequest')}}">{{__('messages.buttons.newrequest')}}</a>
                 <a class="light large" href="{{route('account')}}">{{__('messages.buttons.account')}}</a>
                 <a class="light large" href="{{route('logout')}}">{{__('messages.buttons.logout')}}</a>
-                <a class="light large" href="{{route('sendmail', 2)}}">{{__('send mail')}}</a>
+                <a class="light large" href="{{route('sendmail', Auth::user()->id)}}">{{__('send mail')}}</a>
 
                 @if ($requests->first() != null)
                     <a class="light large" href="{{route('pay', $requests->first()->id)}}">{{__('pay')}}</a>

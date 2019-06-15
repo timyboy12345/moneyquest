@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Mail;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function SendMail(Request $request, $id) {
+    public function SendMail(Request $request, $id)
+    {
         $user = User::findOrFail($id);
 
         Mail::send('emails.request', ['user' => $user], function ($m) use ($user) {

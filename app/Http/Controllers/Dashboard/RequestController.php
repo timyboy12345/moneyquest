@@ -49,7 +49,8 @@ class RequestController extends Controller
             [
                 'request' => $request,
                 'payments' => $payments,
-                'subscriptions' => $subscriptions]
+                'subscriptions' => $subscriptions
+            ]
         );
     }
 
@@ -76,7 +77,8 @@ class RequestController extends Controller
             [
                 'quantity' => 'required|numeric|between:0,50000',
                 'description' => 'required|min:3|max:25',
-                'bankaccount' => 'required']
+                'bankaccount' => 'required'
+            ]
         );
 
         $newrequest = new \App\Request(
@@ -156,8 +158,11 @@ class RequestController extends Controller
             $view = 'emails.request';
         }
 
+
+        $url = url('/');
+
         if ($user != null) {
-            Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
+            Mail::send($view, ['user' => $user, 'request' => $request, 'url' => $url], function ($m) use ($user) {
                 $m->from('hello@app.com', 'MoneyQuest');
 
                 $m->to($user->email, $user->name)->subject('Nieuw betaalverzoek!');

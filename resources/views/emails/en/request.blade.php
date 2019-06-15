@@ -117,12 +117,12 @@
                                     <div style="color:#989898;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;line-height:150%;padding-top:10px;padding-right:0px;padding-bottom:40px;padding-left:10px;">
                                         <div style="font-size: 12px; line-height: 18px; font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; color: #989898;">
                                             <p style="font-size: 14px; line-height: 21px; text-align: left; margin: 0;">
-                                                Beste {{($user->username)}}
+                                                Dear {{($user->username)}}
                                                 <br><br/>
-                                                Je hebt zojuist een betaal verzoek van {{($user = DB::table('users')->find($request->user_id)->username)}} ontvangen:
+                                                You just received a payment request from {{($user = DB::table('users')->find($request->user_id)->username)}}:
                                                 {{($request->id)}}
                                                 <br><br/>
-                                                Het MoneyQuest Team.
+                                                The MoneyQuest Team.
                                             </p>
                                         </div>
                                     </div>

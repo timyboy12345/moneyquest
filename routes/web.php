@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/request/{id}', 'Dashboard\RequestController@read')->name('request');
     Route::get('/request/{id}/disable', 'Dashboard\RequestController@disable')->name('disablerequest');
     Route::get('/request/{id}/share', 'Dashboard\RequestController@share')->name('sharerequest');
+    Route::post('/request/{id}/share', 'Dashboard\RequestController@sharePost');
 
     Route::get('/requests/create/', 'Dashboard\RequestController@create')->name('createrequest');
     Route::post('/requests/create/', 'Dashboard\RequestController@createPost');
@@ -59,7 +60,4 @@ Route::middleware(['auth'])->group(function () {
 
     // Logout
     Route::get('/logout', 'LoginController@logout')->name('logout');
-
-    //mail
-    Route::get('/mail/{id}', 'MailController@SendMail')->name('sendmail');
 });

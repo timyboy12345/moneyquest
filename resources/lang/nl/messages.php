@@ -36,7 +36,8 @@ return [
         'sharerequest' => 'Deel betaalverzoek',
         'delete-account' => 'Account verwijderen',
         'schedule' => 'Betalingen plannen',
-        'continue' => 'Doorgaan'
+        'continue' => 'Doorgaan',
+        'copy' => 'Kopiëren'
     ],
 
     'requests' => [
@@ -58,7 +59,7 @@ return [
         'state' => "Status",
         'comment' => "Notitie",
         'currency' => "Valuta",
-        'image' => "Afbeelding"
+        'image' => "Afbeelding",
     ],
 
     'register' => [
@@ -92,7 +93,8 @@ return [
         'norequests' => 'Geen verzoeken gevonden',
         'choose-bank' => 'Kies je bank',
         'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd',
-        'number-of-payments'=>'Aantal betalingen'
+        'number-of-payments'=>'Aantal betalingen',
+        'email-lang' => 'Email taal'
     ],
 
     'pay' => [

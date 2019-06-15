@@ -35,7 +35,8 @@ return [
         'sharerequest' => 'Share request',
         'delete-account' => 'Delete account',
         'schedule' => 'Plan payments',
-        'continue' => 'Continue'
+        'continue' => 'Continue',
+        'copy' => 'Copy'
     ],
 
     'requests' => [
@@ -91,7 +92,8 @@ return [
         'norequests' => 'No requests found',
         'choose-bank' => 'Choose your bank',
         'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd',
-        'number-of-payments' => 'Number of payments'
+        'number-of-payments' => 'Number of payments',
+        'email-lang' => 'Email language'
     ],
 
     'pay' => [

@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\BankAccount;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MailController;
 use App\Payment;
 use App\Subscription;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-
-
 
 
 
@@ -94,6 +97,32 @@ class RequestController extends Controller
 
         return view('requests/share', ['request' => $request]);
     }
+
+    public function sharePost($id)
+    {
+        $email = Input::get('email');
+        $user = User::where('email', $email)->first();
+        $request = \App\Request::find($id);
+        $lang = Input::get('lang');
+
+        if($lang == "en") {
+            $view = 'emails.en.request';
+        }
+        else{
+            $view = 'emails.request';
+        }
+
+        if($user != null) {
+            Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
+                $m->from('hello@app.com', 'MoneyQuest');
+
+                $m->to($user->email, $user->name)->subject('Nieuw betaalverzoek!');
+            });
+        }
+
+        return view('requests/share', ['request' => $request]);
+    }
+
 
     private static function SaveFeatured(Request $request){
         return $request->file('image')->store('public');

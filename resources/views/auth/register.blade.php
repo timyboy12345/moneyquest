@@ -129,5 +129,10 @@
                 <input class="button" type="submit" value="{{__('messages.buttons.register')}}">
             </form>
         </div>
+
+        <div class="buttons stretch">
+            <a href="{{route('login')}}" class="button small light">Heb je al een account?</a>
+            <a href="{{route('home')}}" class="button small light">Home</a>
+        </div>
     </div>
 @endsection

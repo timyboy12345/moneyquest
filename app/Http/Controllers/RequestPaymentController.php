@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Payment;
-use App\Request;
+use App\Request as PaymentRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\MollieApiClient;
@@ -13,7 +15,7 @@ class RequestPaymentController extends Controller
 {
     public function index($id)
     {
-        $request = Request::find($id);
+        $request = PaymentRequest::find($id);
 
         if (!isset($request)) {
             return redirect('home');
@@ -24,7 +26,7 @@ class RequestPaymentController extends Controller
 
     public function step2($id)
     {
-        $request = Request::find($id);
+        $request = PaymentRequest::find($id);
 
         if (!isset($request)) {
             return redirect('home');
@@ -36,14 +38,37 @@ class RequestPaymentController extends Controller
         } catch (ApiException $e) {
         }
 
+        $currencies = [
+            ['name' => 'Euro', 'iso' => 'EUR'],
+            ['name' => 'United States dollar', 'iso' => 'USD'],
+            ['name' => 'Great British Pound', 'iso' => 'GBP']
+        ];
+
         $methods = $mollie->methods->get("ideal", ["include" => "issuers,pricing"]);
 
-        return view('payrequest/choosebank', ['request' => $request, 'methods' => $methods]);
+        return view('payrequest/choosebank',
+            [
+                'currencies' => $currencies,
+                'request' => $request,
+                'methods' => $methods
+            ]);
     }
 
-    public function step3($id, $issuer_id)
+    /**
+     * @param $id
+     * @param Request $r
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function step3($id, Request $r)
     {
-        $request = Request::find($id);
+        $r->validate(
+            [
+                'currency' => 'required|min:3|max:3',
+                'bank' => 'required'
+            ]
+        );
+
+        $request = PaymentRequest::find($id);
 
         if (!isset($request)) {
             return redirect('home');
@@ -59,22 +84,30 @@ class RequestPaymentController extends Controller
         } catch (ApiException $e) {
         }
 
+        // Get the issuer id from the request
+        $issuer_id = Input::get('bank');
+        $selected_currency = Input::get('currency');
+
+
+
+        $payment_amount = number_format($currency_amount, 2, ".", "");
+
         try {
             $payment = $mollie->payments->create(
                 [
-                "amount" => [
-                    "currency" => "EUR",
-                    "value" => number_format($request->amount, 2, ".", "")
-                ],
-                "description" => "MoneyQ",
-                "redirectUrl" => env("NGROK_ADDRESS") . "/pay/" . $request->id . "/finish",
-                "webhookUrl" => env("NGROK_ADDRESS") . "/payment/webhook/",
-                "metadata" => [
-                    "request_id" => $request->id,
-                    "user_id" => Auth::user()->id,
-                ],
-                "method" => "ideal",
-                "issuer" => $issuer_id
+                    "amount" => [
+                        "currency" => $selected_currency,
+                        "value" => $payment_amount
+                    ],
+                    "description" => "MoneyQ",
+                    "redirectUrl" => env("NGROK_ADDRESS") . "/pay/" . $request->id . "/finish",
+                    "webhookUrl" => env("NGROK_ADDRESS") . "/payment/webhook/",
+                    "metadata" => [
+                        "request_id" => $request->id,
+                        "user_id" => Auth::user()->id,
+                    ],
+                    "method" => "ideal",
+                    "issuer" => $issuer_id
                 ]
             );
 
@@ -109,10 +142,10 @@ class RequestPaymentController extends Controller
 
         $payment = Payment::create(
             [
-            'id' => $request_id,
-            'request_id' => $mollie_payment->metadata->request_id,
-            'user_id' => $mollie_payment->metadata->user_id,
-            'mollie_payment_id' => $_POST['id']
+                'id' => $request_id,
+                'request_id' => $mollie_payment->metadata->request_id,
+                'user_id' => $mollie_payment->metadata->user_id,
+                'mollie_payment_id' => $_POST['id']
             ]
         );
 

@@ -18,6 +18,7 @@ class CreateRequestsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->float('amount')->nullable();
             $table->string('description')->nullable();
+            $table->string('currency', 3)->default('eur');
             $table->string('bank_iban')->nullable();
             $table->boolean('active')->default('1');
             $table->timestamps();

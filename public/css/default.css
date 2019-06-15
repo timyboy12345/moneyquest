@@ -3,6 +3,12 @@
     --primary-dark: #2f0aa8;
 }
 
+button {
+    -webkit-appearance: none;
+    background: inherit;
+    border: inherit;
+}
+
 a {
     text-decoration: inherit;
     color: inherit;
@@ -239,6 +245,7 @@ h1, h2, h3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: 10px 0;
 }
 
 .blocks .item .bank {

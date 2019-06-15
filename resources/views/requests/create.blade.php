@@ -13,7 +13,8 @@
 
                     <div class="formline">
                         <label for="quantity">{{__('messages.words.amount')}}</label>
-                        <input autofocus value="{{old('quantity')}}" type="number" name="quantity" id="quantity">
+                        <input autofocus step="0.01" value="{{old('quantity')}}" type="number" name="quantity"
+                               id="quantity">
 
                         @if ($errors->has('quantity'))
                             <span class="invalid-feedback" role="alert">
@@ -52,11 +53,6 @@
                         <label for=description>{{__('messages.words.comment')}}</label>
                         <textarea value="{{old('comment')}}" type="text" name="comment" id="comment"></textarea>
                     </div>
-
-                    <div class="formline">
-                        <label for=description>{{__('messages.words.currency')}}</label>
-                        <input value="{{old('comment')}}" type="text" name="currency" id="currency">
-                     </div>
 
                     <div class="formline">
                         <label for="image">{{__('messages.words.image')}}</label>

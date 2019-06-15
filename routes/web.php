@@ -56,8 +56,9 @@ Route::middleware(['auth'])->group(
 
         Route::get('/pay/{id}', 'RequestPaymentController@index')->name('pay');
         Route::get('/pay/{id}/bank', 'RequestPaymentController@step2')->name('pay_choosebank');
+        Route::post('/pay/{id}/bank', 'RequestPaymentController@step3');
         Route::get('/pay/{id}/finish', 'RequestPaymentController@finished')->name('finished');
-        Route::get('/pay/{id}/{bank}', 'RequestPaymentController@step3')->name('pay_createrequest');
+//        Route::get('/pay/{id}/{bank}', 'RequestPaymentController@step3')->name('pay_createrequest');
 
         // Logout
         Route::get('/logout', 'LoginController@logout')->name('logout');

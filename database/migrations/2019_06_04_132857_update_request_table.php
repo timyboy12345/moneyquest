@@ -14,7 +14,6 @@ class UpdateRequestTable extends Migration
     public function up()
     {
         Schema::table('requests', function (Blueprint $table) {
-            $table->string('currency', 3);
             $table->text('comment', 300)->nullable();
             $table->text('image', 300)->nullable();
         });

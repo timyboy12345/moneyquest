@@ -19,6 +19,7 @@ class CreatePaymentsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('mollie_payment_id');
             $table->float('amount')->nullable();
+            $table->string('currency', 3)->default('eur');
 
             $table->timestamps();
 

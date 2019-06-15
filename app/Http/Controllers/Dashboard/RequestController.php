@@ -141,7 +141,7 @@ class RequestController extends Controller
 
         return view('requests/share', ['request' => $request]);
     }
-    
+
 
     public function sharePost($id)
     {
@@ -150,14 +150,13 @@ class RequestController extends Controller
         $request = \App\Request::find($id);
         $lang = Input::get('lang');
 
-        if($lang == "en") {
+        if ($lang == "en") {
             $view = 'emails.en.request';
-        }
-        else{
+        } else {
             $view = 'emails.request';
         }
 
-        if($user != null) {
+        if ($user != null) {
             Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
                 $m->from('hello@app.com', 'MoneyQuest');
 
@@ -166,10 +165,5 @@ class RequestController extends Controller
         }
 
         return view('requests/share', ['request' => $request]);
-    }
-
-
-    private static function SaveFeatured(Request $request){
-        return $request->file('image')->store('public');
     }
 }

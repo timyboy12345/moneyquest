@@ -24,7 +24,7 @@ class RequestPaymentController extends Controller
         return view('payrequest/index', ['request' => $request]);
     }
 
-    public function step2($id)
+    public function chooseProvider($id, Request $r)
     {
         $request = PaymentRequest::find($id);
 
@@ -38,19 +38,12 @@ class RequestPaymentController extends Controller
         } catch (ApiException $e) {
         }
 
-        $currencies = [
-            ['name' => 'Euro', 'iso' => 'EUR'],
-            ['name' => 'United States dollar', 'iso' => 'USD'],
-            ['name' => 'Great British Pound', 'iso' => 'GBP']
-        ];
+        $providers = $mollie->methods->all(['amount' => ['value' => '100.00', 'currency' => 'EUR']]);
 
-        $methods = $mollie->methods->get("ideal", ["include" => "issuers,pricing"]);
-
-        return view('payrequest/choosebank',
+        return view('payrequest/chooseprovider',
             [
-                'currencies' => $currencies,
-                'request' => $request,
-                'methods' => $methods
+                'providers' => $providers,
+                'request' => $request
             ]);
     }
 
@@ -59,15 +52,57 @@ class RequestPaymentController extends Controller
      * @param Request $r
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function step3($id, Request $r)
+    public function chooseProviderPost($id, Request $r)
     {
         $r->validate(
             [
-                'currency' => 'required|min:3|max:3',
-                'bank' => 'required'
+                'provider' => 'required'
             ]
         );
 
+        $request = PaymentRequest::find($id);
+
+        if (!isset($request)) {
+            return redirect('home');
+        }
+
+        return redirect(route('pay_choosemethod', [$id, Input::get('provider')]));
+    }
+
+    public function chooseMethod($id, $provider)
+    {
+        $request = PaymentRequest::find($id);
+
+        if (!isset($request)) {
+            return redirect('home');
+        }
+
+        try {
+            $mollie = new MollieApiClient;
+            $mollie->setApiKey(env('MOLLIE_API_KEY'));
+        } catch (ApiException $e) {
+        }
+
+        $mollie_provider = $mollie->methods->get(
+            $provider, ["include" => "issuers,pricing"]
+        );
+
+        return view(
+            'payrequest/choosemethod',
+            [
+                'provider' => $mollie_provider,
+                'request' => $request
+            ]
+        );
+    }
+
+    /**
+     * @param $id
+     * @param Request $r
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function chooseMethodPost($id, $provider, Request $r)
+    {
         $request = PaymentRequest::find($id);
 
         if (!isset($request)) {
@@ -85,19 +120,14 @@ class RequestPaymentController extends Controller
         }
 
         // Get the issuer id from the request
-        $issuer_id = Input::get('bank');
-        $selected_currency = Input::get('currency');
-
-
-
-        $payment_amount = number_format($currency_amount, 2, ".", "");
+        $issuer_id = Input::get('method');
 
         try {
             $payment = $mollie->payments->create(
                 [
                     "amount" => [
-                        "currency" => $selected_currency,
-                        "value" => $payment_amount
+                        "currency" => 'DKK',
+                        "value" => number_format($request->amount, 2, ".", "")
                     ],
                     "description" => "MoneyQ",
                     "redirectUrl" => env("NGROK_ADDRESS") . "/pay/" . $request->id . "/finish",
@@ -106,13 +136,14 @@ class RequestPaymentController extends Controller
                         "request_id" => $request->id,
                         "user_id" => Auth::user()->id,
                     ],
-                    "method" => "ideal",
+                    "method" => $provider,
                     "issuer" => $issuer_id
                 ]
             );
 
             return redirect($payment->getCheckoutUrl());
         } catch (ApiException $e) {
+            return response()->json($e->getMessage());
         }
     }
 

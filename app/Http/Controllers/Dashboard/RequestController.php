@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\BankAccount;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\MailController;
 use App\Payment;
 use App\Subscription;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -144,7 +142,6 @@ class RequestController extends Controller
         return view('requests/share', ['request' => $request]);
     }
 
-
     public function sharePost($id)
     {
         $email = Input::get('email');
@@ -154,15 +151,13 @@ class RequestController extends Controller
 
         if ($lang == "en") {
             $view = 'emails.en.request';
+
         } else {
             $view = 'emails.request';
         }
 
-
-        $url = url('/');
-
         if ($user != null) {
-            Mail::send($view, ['user' => $user, 'request' => $request, 'url' => $url], function ($m) use ($user) {
+            Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
                 $m->from('hello@app.com', 'MoneyQuest');
 
                 $m->to($user->email, $user->name)->subject('Nieuw betaalverzoek!');

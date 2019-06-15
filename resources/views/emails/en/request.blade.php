@@ -109,7 +109,7 @@
                                     <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: 'Trebuchet MS', Tahoma, sans-serif"><![endif]-->
                                     <div style="color:#555555;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;line-height:120%;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
                                         <div style="font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 12px; line-height: 14px; color: #555555;">
-                                            <p style="font-size: 12px; line-height: 28px; margin: 0;"><span style="font-size: 24px;">Welkom!</span></p>
+                                            <p style="font-size: 12px; line-height: 28px; margin: 0;"><span style="font-size: 24px;">Welcome!</span></p>
                                         </div>
                                     </div>
                                     <!--[if mso]></td></tr></table><![endif]-->
@@ -120,7 +120,7 @@
                                                 Dear {{($user->username)}}
                                                 <br><br/>
                                                 You just received a payment request from {{($user = DB::table('users')->find($request->user_id)->username)}}:
-                                                <a href="{{($url)}}/pay/{{($request->id)}}"> {{($url)}}/pay/{{($request->id)}}</a>
+                                                <a href="{{(url('/'))}}/pay/{{($request->id)}}"> {{(url('/'))}}/pay/{{($request->id)}}</a>
                                                 <br><br/>
                                                 The MoneyQuest Team.
                                             </p>
@@ -185,7 +185,7 @@
                                     <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: 'Trebuchet MS', Tahoma, sans-serif"><![endif]-->
                                     <div style="color:#555555;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;line-height:120%;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
                                         <div style="font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 12px; line-height: 14px; color: #555555;">
-                                            <a href="MoneyQuest.nl" style="font-size: 14px; line-height: 16px; margin: 0;">MoneyQuest.nl</a>
+                                            <a href="{{(url('/'))}}" style="font-size: 14px; line-height: 16px; margin: 0;">{{(url('/'))}}</a>
                                         </div>
                                     </div>
                                     <!--[if mso]></td></tr></table><![endif]-->

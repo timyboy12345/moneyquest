@@ -151,6 +151,7 @@ class RequestController extends Controller
 
         if ($lang == "en") {
             $view = 'emails.en.request';
+            
             if ($user != null) {
                 Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
                     $m->from('hello@app.com', 'MoneyQuest');

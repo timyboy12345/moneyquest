@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Payment;
 use App\Request as PaymentRequest;
+use danielme85\CConverter\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -13,6 +14,10 @@ use Mollie\Api\MollieApiClient;
 
 class RequestPaymentController extends Controller
 {
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function index($id)
     {
         $request = PaymentRequest::find($id);
@@ -24,7 +29,13 @@ class RequestPaymentController extends Controller
         return view('payrequest/index', ['request' => $request]);
     }
 
-    public function chooseProvider($id, Request $r)
+    /**
+     * @param $id
+     * @param Request $r
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     * @throws ApiException
+     */
+    public function chooseMethod($id, Request $r)
     {
         $request = PaymentRequest::find($id);
 
@@ -38,13 +49,27 @@ class RequestPaymentController extends Controller
         } catch (ApiException $e) {
         }
 
-        $providers = $mollie->methods->all(['amount' => ['value' => '100.00', 'currency' => 'EUR']]);
+        $currencies = [
+            ['name' => 'Euro', 'iso' => 'EUR'],
+            ['name' => 'United States Dollar', 'iso' => 'USD'],
+            ['name' => 'Great British Pound', 'iso' => 'GBP']
+        ];
 
-        return view('payrequest/chooseprovider',
+        $amount = number_format($request->amount, 2, ".", "");
+        $selected_currency = Input::get('currency') ?: 'EUR';
+
+        $providers = $mollie->methods->all(
+            ['amount' => ['value' => $amount, 'currency' => $selected_currency]]
+        );
+
+        return view(
+            'payrequest/choose_method',
             [
                 'providers' => $providers,
-                'request' => $request
-            ]);
+                'request' => $request,
+                'currencies' => $currencies
+            ]
+        );
     }
 
     /**
@@ -52,7 +77,7 @@ class RequestPaymentController extends Controller
      * @param Request $r
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function chooseProviderPost($id, Request $r)
+    public function chooseMethodPost($id, Request $r)
     {
         $r->validate(
             [
@@ -66,10 +91,23 @@ class RequestPaymentController extends Controller
             return redirect('home');
         }
 
-        return redirect(route('pay_choosemethod', [$id, Input::get('provider')]));
+        $selected_currency = Input::get('currency') ?: 'EUR';
+
+        return redirect(
+            route(
+                'pay_chooseissuer', [
+                    $id, Input::get('provider'), 'currency' => $selected_currency
+                ]
+            )
+        );
     }
 
-    public function chooseMethod($id, $provider)
+    /**
+     * @param $id
+     * @param $provider
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
+    public function chooseIssuer($id, $provider)
     {
         $request = PaymentRequest::find($id);
 
@@ -83,15 +121,21 @@ class RequestPaymentController extends Controller
         } catch (ApiException $e) {
         }
 
-        $mollie_provider = $mollie->methods->get(
-            $provider, ["include" => "issuers,pricing"]
-        );
+        try {
+            $mollie_provider = $mollie->methods->get(
+                $provider, ["include" => "issuers,pricing"]
+            );
+        } catch (ApiException $e) {
+            return redirect(route('pay_choosemethod', $id));
+        }
 
         return view(
-            'payrequest/choosemethod',
+            'payrequest/chooseissuer',
             [
                 'provider' => $mollie_provider,
-                'request' => $request
+                'request' => $request,
+                'selected_method' => $provider,
+                'selected_currency' => Input::get('currency') ?: 'EUR'
             ]
         );
     }
@@ -101,7 +145,7 @@ class RequestPaymentController extends Controller
      * @param Request $r
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function chooseMethodPost($id, $provider, Request $r)
+    public function chooseIssuerPost($id, $provider, Request $r)
     {
         $request = PaymentRequest::find($id);
 
@@ -119,6 +163,14 @@ class RequestPaymentController extends Controller
         } catch (ApiException $e) {
         }
 
+        $selected_currency = Input::get('currency') ?: 'EUR';
+
+        $correct_amount = Currency::conv(
+            'EUR', $selected_currency, $request->amount
+        );
+
+        $correct_amount = number_format($correct_amount, 2, ".", "");
+
         // Get the issuer id from the request
         $issuer_id = Input::get('method');
 
@@ -126,8 +178,8 @@ class RequestPaymentController extends Controller
             $payment = $mollie->payments->create(
                 [
                     "amount" => [
-                        "currency" => 'DKK',
-                        "value" => number_format($request->amount, 2, ".", "")
+                        "currency" => $selected_currency,
+                        "value" => $correct_amount
                     ],
                     "description" => "MoneyQ",
                     "redirectUrl" => env("NGROK_ADDRESS") . "/pay/" . $request->id . "/finish",
@@ -143,15 +195,24 @@ class RequestPaymentController extends Controller
 
             return redirect($payment->getCheckoutUrl());
         } catch (ApiException $e) {
+            // Go back when mollie creates an error
             return response()->json($e->getMessage());
+            return back();
         }
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function finished($id)
     {
         return view('payrequest/finished');
     }
 
+    /**
+     * @description The webhook for mollie, to verify payments
+     */
     public function webhook()
     {
         if (!isset($_POST['id'])) {
@@ -169,11 +230,12 @@ class RequestPaymentController extends Controller
             die('This payment was not found');
         }
 
-        $request_id = Str::random(50);
+        $payment_id = Str::random(50);
 
+        // Create a new payment
         $payment = Payment::create(
             [
-                'id' => $request_id,
+                'id' => $payment_id,
                 'request_id' => $mollie_payment->metadata->request_id,
                 'user_id' => $mollie_payment->metadata->user_id,
                 'mollie_payment_id' => $_POST['id']

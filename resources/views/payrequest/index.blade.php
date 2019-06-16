@@ -23,7 +23,7 @@
             <div class="block">
                 <div class="buttons">
                     <a class="button" href="{{route('schedule', $request->id)}}">{{__('messages.buttons.schedule')}}</a>
-                    <a class="button" href="{{route('pay_chooseprovider', $request->id)}}">{{__('messages.buttons.paynow')}}</a>
+                    <a class="button" href="{{route('pay_choosemethod', $request->id)}}">{{__('messages.buttons.paynow')}}</a>
                 </div>
             </div>
         </div>

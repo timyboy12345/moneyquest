@@ -15,6 +15,7 @@ return [
 
     'welcome' => 'Welcome to MoneyQ',
     'introduction' => 'This is MoneyQ, the best payment provider of the Netherlands.',
+    
     'buttons' => [
         'login' => 'Log in',
         'register' => 'Register',
@@ -95,7 +96,11 @@ return [
         'bankaccountnodelete' => 'This bankaccount can not be deleted',
         'number-of-payments' => 'Number of payments',
         'email-lang' => 'Email language',
-        'interval' => 'Days between transactions'
+        'interval' => 'Days between transactions',
+        'alreadygavepermission' => 'You already gave permission to withdraw from your bank account, this will be from :bankaccount',
+        'choose-method' => 'Choose a payment method',
+        'youwillpaywith'=>'You will pay using :method',
+        'youwillpayin'=>'You will use the currency :currency'
     ],
 
     'pay' => [

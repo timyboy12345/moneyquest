@@ -60,7 +60,7 @@
                     <div class="list stretch">
                         @foreach ($payments as $payment)
                             <div class="item">
-                                {{$payment->user->username}} &euro;{{  $payment->amount ?: $request->amount }} {{Carbon\Carbon::now()->formatLocalized('%x')}}
+                                {{$payment->user->username}} &euro;{{  $payment->amount ?: $request->amount }} {{Carbon\Carbon::parse($payment->updated_at)->formatLocalized('%x')}}
                             </div>
                         @endforeach
                         @foreach ($subscriptions as $subscription)

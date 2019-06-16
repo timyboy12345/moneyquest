@@ -56,11 +56,11 @@ Route::middleware(['auth'])->group(
 
         Route::get('/pay/{id}', 'RequestPaymentController@index')->name('pay');
 
-        Route::get('/pay/{id}/chooseprovider', 'RequestPaymentController@chooseProvider')->name('pay_chooseprovider');
-        Route::post('/pay/{id}/chooseprovider', 'RequestPaymentController@chooseProviderPost');
+        Route::get('/pay/{id}/choosemethod', 'RequestPaymentController@chooseMethod')->name('pay_choosemethod');
+        Route::post('/pay/{id}/choosemethod', 'RequestPaymentController@chooseMethodPost');
 
-        Route::get('/pay/{id}/choosemethod/{provider}', 'RequestPaymentController@chooseMethod')->name('pay_choosemethod');
-        Route::post('/pay/{id}/choosemethod/{provider}', 'RequestPaymentController@chooseMethodPost');
+        Route::get('/pay/{id}/chooseissuer/{provider}', 'RequestPaymentController@chooseIssuer')->name('pay_chooseissuer');
+        Route::post('/pay/{id}/chooseissuer/{provider}', 'RequestPaymentController@chooseIssuerPost');
 
         Route::get('/pay/{id}/finish', 'RequestPaymentController@finished')->name('finished');
 //        Route::get('/pay/{id}/{bank}', 'RequestPaymentController@step3')->name('pay_createrequest');

@@ -8,7 +8,15 @@
         <div class="block">
 
             <h3 class="text-center">{{__('messages.words.request')}}</h3>
-            <h1>{{__('messages.sentences.choose-provider')}}</h1>
+            <h1>{{__('messages.sentences.choose-method')}}</h1>
+
+            <form method="get">
+                <div class="blocks">
+                    @foreach ($currencies as $currency)
+                        <button type="submit" name="currency" value="{{$currency['iso']}}" class="item">{{$currency['name']}}</button>
+                    @endforeach
+                </div>
+            </form>
 
             <form method="post">
                 @csrf

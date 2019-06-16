@@ -58,7 +58,8 @@ return [
         'state' => "State",
         'comment' => "Note",
         'currency' => "Currency",
-        'image' => "Image"
+        'image' => "Image",
+        'iban' => 'Iban-nr'
     ],
 
     'register' => [
@@ -93,7 +94,8 @@ return [
         'choose-bank' => 'Choose your bank',
         'bankaccountnodelete' => 'This bankaccount can not be deleted',
         'number-of-payments' => 'Number of payments',
-        'email-lang' => 'Email language'
+        'email-lang' => 'Email language',
+        'interval' => 'Days between transactions'
     ],
 
     'pay' => [

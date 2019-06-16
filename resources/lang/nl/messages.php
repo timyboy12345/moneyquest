@@ -60,6 +60,7 @@ return [
         'comment' => "Notitie",
         'currency' => "Valuta",
         'image' => "Afbeelding",
+        'iban' => 'Iban-nr'
     ],
 
     'register' => [
@@ -94,7 +95,8 @@ return [
         'choose-bank' => 'Kies je bank',
         'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd',
         'number-of-payments'=>'Aantal betalingen',
-        'email-lang' => 'Email taal'
+        'email-lang' => 'Email taal',
+        'interval' => 'Dagen tussen transacties'
     ],
 
     'pay' => [

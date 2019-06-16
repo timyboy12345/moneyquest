@@ -14,7 +14,7 @@
     <div class="wrapper">
         <div class="block">
             {{ucfirst($request->user->username)}} {{__('messages.pay.is-asking')}}
-            <b>{{$request->amount}}</b> {{__('messages.pay.for')}} {{$request->description}}
+            <b>{{$request->amount}} {{$request->currency}}</b> {{__('messages.pay.for')}} {{$request->description}}
         </div>
         <div class="block">
             <form method="post">
@@ -44,7 +44,7 @@
 
                 @if ($mandate == null)
                     <div class="formline">
-                        <label for="iban">{{__('messages.buttons.iban')}}</label>
+                        <label for="iban">{{__('messages.words.iban')}}</label>
                         <input value="{{old('interval')}}" type="text" name="iban" id="iban">
 
                         @if ($errors->has('iban'))

@@ -13,7 +13,8 @@
 
                     <div class="formline">
                         <label for="quantity">{{__('messages.words.amount')}}</label>
-                        <input disabled value="{{$request->amount}}" type="number" name="quantity" id="quantity">
+                        <input disabled value="{{number_format($request->amount, 2, ".", "")}}" type="number"
+                               name="quantity" id="quantity">
                     </div>
 
                     <div class="formline">

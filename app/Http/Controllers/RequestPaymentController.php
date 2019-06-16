@@ -95,7 +95,8 @@ class RequestPaymentController extends Controller
 
         return redirect(
             route(
-                'pay_chooseissuer', [
+                'pay_chooseissuer',
+                [
                     $id, Input::get('provider'), 'currency' => $selected_currency
                 ]
             )
@@ -123,7 +124,8 @@ class RequestPaymentController extends Controller
 
         try {
             $mollie_provider = $mollie->methods->get(
-                $provider, ["include" => "issuers,pricing"]
+                $provider,
+                ["include" => "issuers,pricing"]
             );
         } catch (ApiException $e) {
             return redirect(route('pay_choosemethod', $id));
@@ -166,7 +168,9 @@ class RequestPaymentController extends Controller
         $selected_currency = Input::get('currency') ?: 'EUR';
 
         $correct_amount = Currency::conv(
-            'EUR', $selected_currency, $request->amount
+            'EUR',
+            $selected_currency,
+            $request->amount
         );
 
         $correct_amount = number_format($correct_amount, 2, ".", "");

@@ -151,7 +151,6 @@ class RequestController extends Controller
 
         if ($lang == "en") {
             $view = 'emails.en.request';
-
         } else {
             $view = 'emails.request';
         }

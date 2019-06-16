@@ -54,7 +54,7 @@
                         @endif
                     </div>
                 @else
-                    <p>Je hebt al eens toestemming gegeven aan ons om geld af te schrijven</p>
+                    <p>{{__('messages.sentences.alreadygavepermission', ['bankaccount'=>$mandate->details->consumerAccount])}}</p>
                 @endif
 
                 <input type="submit" class="button">

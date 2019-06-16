@@ -93,8 +93,12 @@ return [
         'norequests' => 'Geen verzoeken gevonden',
         'choose-bank' => 'Kies je bank',
         'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd',
-        'number-of-payments'=>'Aantal betalingen',
-        'email-lang' => 'Email taal'
+        'number-of-payments' => 'Aantal betalingen',
+        'email-lang' => 'Email taal',
+        'alreadygavepermission' => 'Je hebt al toestemming gegeven om geld af te schrijven, dit gaat van :bankaccount',
+        'choose-method' => 'Kies een betaalmethode',
+        'youwillpaywith'=>'Je gaat betalen met :method',
+        'youwillpayin'=>'Je gaat betalen met de valuta :currency'
     ],
 
     'pay' => [

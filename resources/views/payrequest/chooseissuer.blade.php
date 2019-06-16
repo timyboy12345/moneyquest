@@ -8,8 +8,9 @@
         <div class="block">
 
             <h3 class="text-center">{{__('messages.words.request')}}</h3>
-            <p>[VERTAAL MIJ!] Je gaat betalen in {{$selected_currency}}</p>
-            <p>[VERTAAL MIJ!] Je gaat betalen met {{$provider->description}}</p>
+
+            <p>{{__('messages.sentences.youwillpayin', ['currency'=>$selected_currency])}}</p>
+            <p>{{__('messages.sentences.youwillpaywith', ['method'=>$provider->description])}}</p>
 
             <form method="post">
                 @csrf
@@ -18,7 +19,8 @@
                     <h1>{{__('messages.sentences.choose-bank')}}</h1>
                     <div class="blocks">
                         @foreach ($provider->issuers as $issuer)
-                            <button title="{{$issuer->name}}" type="submit" name="issuer" value="{{$issuer->id}}" class="item">
+                            <button title="{{$issuer->name}}" type="submit" name="issuer" value="{{$issuer->id}}"
+                                    class="item">
                                 <img alt="{{$issuer->name}} logo" class="bank" src="{{$issuer->image->svg}}">
                             </button>
                         @endforeach
@@ -31,7 +33,8 @@
 
         <div class="buttons stretch">
             <a class="button light" href="{{route('home')}}">{{__('messages.buttons.cancel')}}</a>
-            <a class="button light" href="{{route('pay_choosemethod', $request->id)}}">{{__('messages.buttons.back')}}</a>
+            <a class="button light"
+               href="{{route('pay_choosemethod', $request->id)}}">{{__('messages.buttons.back')}}</a>
         </div>
     </div>
 @endsection

@@ -86,8 +86,8 @@ class RequestController extends Controller
                 "amount" => $request->input('quantity'),
                 "description" => $request->input('description'),
                 "bank_iban" => $request->input('bankaccount'),
-                "currency" => $request->input('currency'),
-                "comment" => $request->input('comment'),
+                "currency" => 'EUR',
+                "comment" => $request->input('comment')
             ]
         );
 
@@ -151,7 +151,7 @@ class RequestController extends Controller
 
         if ($lang == "en") {
             $view = 'emails.en.request';
-            
+
             if ($user != null) {
                 Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
                     $m->from('hello@app.com', 'MoneyQuest');

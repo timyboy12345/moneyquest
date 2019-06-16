@@ -93,7 +93,11 @@ return [
         'choose-bank' => 'Choose your bank',
         'bankaccountnodelete' => 'This bankaccount can not be deleted',
         'number-of-payments' => 'Number of payments',
-        'email-lang' => 'Email language'
+        'email-lang' => 'Email language',
+        'alreadygavepermission' => 'You already gave permission to withdraw from your bank account, this will be from :bankaccount',
+        'choose-method' => 'Choose a payment method',
+        'youwillpaywith'=>'You will pay using :method',
+        'youwillpayin'=>'You will use the currency :currency'
     ],
 
     'pay' => [

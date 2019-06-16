@@ -151,17 +151,22 @@ class RequestController extends Controller
 
         if ($lang == "en") {
             $view = 'emails.en.request';
+            if ($user != null) {
+                Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
+                    $m->from('hello@app.com', 'MoneyQuest');
 
+                    $m->to($user->email, $user->name)->subject('New payment request!');
+                });
+            }
         } else {
             $view = 'emails.request';
-        }
+            if ($user != null) {
+                Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
+                    $m->from('hello@app.com', 'MoneyQuest');
 
-        if ($user != null) {
-            Mail::send($view, ['user' => $user, 'request' => $request], function ($m) use ($user) {
-                $m->from('hello@app.com', 'MoneyQuest');
-
-                $m->to($user->email, $user->name)->subject('Nieuw betaalverzoek!');
-            });
+                    $m->to($user->email, $user->name)->subject('Nieuw betaalverzoek!');
+                });
+            }
         }
 
         return view('requests/share', ['request' => $request]);

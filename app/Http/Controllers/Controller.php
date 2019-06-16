@@ -22,6 +22,7 @@ class Controller extends BaseController
         }
 
         App::setLocale($lang);
+        setlocale(LC_ALL, $lang);
     }
 
     public function getBrowserLocale()

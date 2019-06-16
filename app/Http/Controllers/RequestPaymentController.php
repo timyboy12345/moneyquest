@@ -172,7 +172,7 @@ class RequestPaymentController extends Controller
         $correct_amount = number_format($correct_amount, 2, ".", "");
 
         // Get the issuer id from the request
-        $issuer_id = Input::get('method');
+        $issuer_id = Input::get('issuer');
 
         try {
             $payment = $mollie->payments->create(
@@ -182,7 +182,8 @@ class RequestPaymentController extends Controller
                         "value" => $correct_amount
                     ],
                     "description" => "MoneyQ",
-                    "redirectUrl" => env("NGROK_ADDRESS") . "/pay/" . $request->id . "/finish",
+                    "redirectUrl" =>
+                        env("NGROK_ADDRESS") . "/pay/" . $request->id . "/finish",
                     "webhookUrl" => env("NGROK_ADDRESS") . "/payment/webhook/",
                     "metadata" => [
                         "request_id" => $request->id,
@@ -196,7 +197,7 @@ class RequestPaymentController extends Controller
             return redirect($payment->getCheckoutUrl());
         } catch (ApiException $e) {
             // Go back when mollie creates an error
-            return response()->json($e->getMessage());
+//            return response()->json($e->getMessage());
             return back();
         }
     }
@@ -215,7 +216,7 @@ class RequestPaymentController extends Controller
      */
     public function webhook()
     {
-        if (!isset($_POST['id'])) {
+        if (empty($_POST['id'])) {
             die('Please attach an ID');
         }
 
@@ -226,7 +227,7 @@ class RequestPaymentController extends Controller
         } catch (ApiException $e) {
         }
 
-        if (!isset($mollie_payment)) {
+        if (empty($mollie_payment)) {
             die('This payment was not found');
         }
 
@@ -238,6 +239,7 @@ class RequestPaymentController extends Controller
                 'id' => $payment_id,
                 'request_id' => $mollie_payment->metadata->request_id,
                 'user_id' => $mollie_payment->metadata->user_id,
+                'amount' => $mollie_payment->amount->value,
                 'mollie_payment_id' => $_POST['id']
             ]
         );

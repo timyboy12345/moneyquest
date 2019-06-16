@@ -274,6 +274,10 @@ h1, h2, h3 {
     background: #f2f2f2;
 }
 
+.list.stretch .item {
+    flex-grow: 1;
+}
+
 .list.wide .item {
     width: 100%;
     position: relative;

@@ -56,15 +56,16 @@
             <div class="block">
                 <h3 class="text-center">{{__('messages.words.payments')}}</h3>
                 @if ($payments->count() > 0 || $subscriptions->count() > 0)
-                    <div class="list">
+                    <div class="list stretch">
                         @foreach ($payments as $payment)
                             <div class="item">
-                                {{$payment->user->username}} &euro;{{  $payment->amount ?: $request->amount }}
+                                {{$payment->user->username}} &euro;{{  $payment->amount ?: $request->amount }} {{Carbon\Carbon::now()->formatLocalized('%x')}}
                             </div>
                         @endforeach
                         @foreach ($subscriptions as $subscription)
                             <div class="item">
-                                {{$subscription->user->username}} &euro;{{$subscription->amount ?: $request->amount }} per {{$subscription->interval}} dagen
+                                {{$subscription->user->username}} &euro;{{$subscription->amount ?: $request->amount }}
+                                per {{$subscription->interval}} dagen
                             </div>
                         @endforeach
                     </div>

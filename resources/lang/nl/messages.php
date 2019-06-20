@@ -60,6 +60,7 @@ return [
         'comment' => "Notitie",
         'currency' => "Valuta",
         'image' => "Afbeelding",
+        'iban' => 'Iban-nr'
     ],
 
     'register' => [

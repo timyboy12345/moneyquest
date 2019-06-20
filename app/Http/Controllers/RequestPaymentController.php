@@ -155,7 +155,7 @@ class RequestPaymentController extends Controller
             return redirect('home');
         }
 
-        if (env('NGROK_ADDRESS') == null || env('NGROK_ADDRESS') == "") {
+        if (env('PUBLIC_URL') == null || env('PUBLIC_URL') == "") {
             die('Please enter a valid HTTP address in the env');
         }
 
@@ -187,8 +187,8 @@ class RequestPaymentController extends Controller
                     ],
                     "description" => "MoneyQ",
                     "redirectUrl" =>
-                        env("NGROK_ADDRESS") . "/pay/" . $request->id . "/finish",
-                    "webhookUrl" => env("NGROK_ADDRESS") . "/payment/webhook/",
+                        env("PUBLIC_URL") . "/pay/" . $request->id . "/finish",
+                    "webhookUrl" => env("PUBLIC_URL") . "/payment/webhook/",
                     "metadata" => [
                         "request_id" => $request->id,
                         "user_id" => Auth::user()->id,

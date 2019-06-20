@@ -97,8 +97,9 @@ return [
         'email-lang' => 'Email taal',
         'alreadygavepermission' => 'Je hebt al toestemming gegeven om geld af te schrijven, dit gaat van :bankaccount',
         'choose-method' => 'Kies een betaalmethode',
-        'youwillpaywith'=>'Je gaat betalen met :method',
-        'youwillpayin'=>'Je gaat betalen met de valuta :currency'
+        'youwillpaywith' => 'Je gaat betalen met :method',
+        'youwillpayin' => 'Je gaat betalen met de valuta :currency',
+        'noaccountwiththismail' => 'Er is geen account met dit emailadres',
     ],
 
     'pay' => [

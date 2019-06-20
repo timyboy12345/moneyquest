@@ -149,6 +149,11 @@ class RequestController extends Controller
         $request = \App\Request::find($id);
         $lang = Input::get('lang');
 
+        if (empty($user)) {
+            return view('requests/share', ['request' => $request])
+                ->withErrors(['mail' => __('messages.sentences.noaccountwiththismail')]);
+        }
+
         if ($lang == "en") {
             $view = 'emails.en.request';
 

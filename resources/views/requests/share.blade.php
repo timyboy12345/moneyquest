@@ -22,6 +22,7 @@
                       <a class="button small" onclick="copyText()">{{__('messages.buttons.copy')}}</a>
                   </div>
                 </div>
+
                 <form method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="formline">
@@ -37,6 +38,10 @@
                                value="{{__('messages.buttons.sharerequest')}}" href="">
                     </div>
                 </form>
+
+                @if ($errors->has('mail'))
+                    <div class="alert">{{ $errors->first('mail') }}</div>
+                @endif
             </div>
         </div>
     </div>

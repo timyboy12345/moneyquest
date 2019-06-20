@@ -56,7 +56,7 @@
 
                     <div class="formline">
                         <label for="image">{{__('messages.words.image')}}</label>
-                        <input type="file" name="image" id="image">
+                        <input type="file" accept="image/*" name="image" id="image">
                     </div>
 
                     <div class="buttons stretch margin-top">

@@ -106,6 +106,7 @@ return [
     'pay' => [
         'for' => 'voor',
         'is-asking' => 'vraagt',
-        'date' => 'Datum: '
+        'date' => 'Datum: ',
+        'success' => 'Je betaalverzoek is verwerkt!'
     ]
 ];

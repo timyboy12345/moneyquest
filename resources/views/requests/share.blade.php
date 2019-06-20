@@ -17,7 +17,7 @@
                 <h3 class="text-center">{{__('messages.words.request')}}</h3>
                 <p>{{__('messages.words.description')}}: {{$request->description}}</p>
                 <div class="formline">
-                 <input id="toCopy" type="text" value="{{(url('/'))}}/pay/{{$request->id}}" readonly>
+                 <input id="toCopy" type="text" value="{{env('PUBLIC_URL')}}/pay/{{$request->id}}" readonly>
                   <div class="margin-top">
                       <a class="button small" onclick="copyText()">{{__('messages.buttons.copy')}}</a>
                   </div>

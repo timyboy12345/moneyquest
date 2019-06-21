@@ -37,7 +37,8 @@ return [
         'delete-account' => 'Account verwijderen',
         'schedule' => 'Betalingen plannen',
         'continue' => 'Doorgaan',
-        'copy' => 'Kopiëren'
+        'copy' => 'Kopiëren',
+        'noaccount' => "Nog geen account?",
     ],
 
     'requests' => [
@@ -95,6 +96,7 @@ return [
         'choose-bank' => 'Kies je bank',
         'bankaccountnodelete' => 'Dit bankaccount kan niet worden verwijderd',
         'number-of-payments' => 'Aantal betalingen',
+        'interval' => 'Aantal dagen tussen betalingen',
         'email-lang' => 'Email taal',
         'alreadygavepermission' => 'Je hebt al toestemming gegeven om geld af te schrijven, dit gaat van :bankaccount',
         'choose-method' => 'Kies een betaalmethode',
@@ -107,6 +109,8 @@ return [
         'for' => 'voor',
         'is-asking' => 'vraagt',
         'date' => 'Datum: ',
-        'success' => 'Je betaalverzoek is verwerkt!'
+        'success' => 'Je betaalverzoek is verwerkt!',
+        'error' => 'Je betaalverzoek is (nog) niet verwerkt!',
+        'subscription_success' => 'Je verzoek is verwerkt door onze betaalinstantie'
     ]
 ];

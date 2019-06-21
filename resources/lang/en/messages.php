@@ -15,7 +15,7 @@ return [
 
     'welcome' => 'Welcome to MoneyQ',
     'introduction' => 'This is MoneyQ, the best payment provider of the Netherlands.',
-    
+
     'buttons' => [
         'login' => 'Log in',
         'register' => 'Register',
@@ -37,7 +37,8 @@ return [
         'delete-account' => 'Delete account',
         'schedule' => 'Plan payments',
         'continue' => 'Continue',
-        'copy' => 'Copy'
+        'copy' => 'Copy',
+        'noaccount' => "No account yet?"
     ],
 
     'requests' => [
@@ -95,19 +96,22 @@ return [
         'choose-bank' => 'Choose your bank',
         'bankaccountnodelete' => 'This bankaccount can not be deleted',
         'number-of-payments' => 'Number of payments',
+        'interval' => 'Days between payments',
         'email-lang' => 'Email language',
         'interval' => 'Days between transactions',
         'alreadygavepermission' => 'You already gave permission to withdraw from your bank account, this will be from :bankaccount',
         'choose-method' => 'Choose a payment method',
-        'youwillpaywith'=>'You will pay using :method',
-        'youwillpayin'=>'You will use the currency :currency',
-        'noaccountwiththismail'=>'We\'ve not found an account with this email adress',
+        'youwillpaywith' => 'You will pay using :method',
+        'youwillpayin' => 'You will use the currency :currency',
+        'noaccountwiththismail' => 'We\'ve not found an account with this email adress',
     ],
 
     'pay' => [
         'for' => 'for',
         'is-asking' => 'is asking',
         'date' => 'Date: ',
-        'success' => 'Je betaalverzoek is verwerkt!'
+        'success' => 'Je betaalverzoek is verwerkt!',
+        'error' => 'Je betaalverzoek is (nog) niet verwerkt!',
+        'subscription_success' => 'Your subscription has been enabled'
     ]
 ];

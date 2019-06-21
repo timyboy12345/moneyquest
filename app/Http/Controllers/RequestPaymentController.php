@@ -8,6 +8,7 @@ use danielme85\CConverter\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Mollie\Api\Exceptions\ApiException;
 use Mollie\Api\MollieApiClient;
@@ -188,7 +189,7 @@ class RequestPaymentController extends Controller
                     "description" => "MoneyQ",
                     "redirectUrl" =>
                         env("PUBLIC_URL") . "/pay/" . $request->id . "/finish",
-                    "webhookUrl" => env("PUBLIC_URL") . "/payment/webhook/",
+                    "webhookUrl" => env("PUBLIC_URL") . "/payment/webhook",
                     "metadata" => [
                         "request_id" => $request->id,
                         "user_id" => Auth::user()->id,
@@ -212,7 +213,27 @@ class RequestPaymentController extends Controller
      */
     public function finished($id)
     {
-        return view('payrequest/finished');
+        $request = \App\Request::find($id);
+
+        try {
+            $mollie = new MollieApiClient;
+            $mollie->setApiKey(env('MOLLIE_API_KEY'));
+        } catch (ApiException $e) {
+        }
+
+        $payment = $request
+            ->payments
+            ->where('user_id', Auth::user()->id)
+            ->sortByDesc('updated_at')
+            ->first();
+
+        if (!empty($payment)) {
+            $mollie_payment = $mollie->payments->get($payment->mollie_payment_id);
+        } else {
+            return redirect(route('pay', $id));
+        }
+
+        return view('payrequest/finished', compact('mollie_payment'));
     }
 
     /**
@@ -221,7 +242,10 @@ class RequestPaymentController extends Controller
     public function webhook()
     {
         if (empty($_POST['id'])) {
-            die('Please attach an ID');
+            Log::debug('The webhook was called without an ID.');
+            Log::debug($_SERVER);
+            Log::debug($_POST);
+            return response("Please give an ID", 500);
         }
 
         try {
@@ -229,10 +253,11 @@ class RequestPaymentController extends Controller
             $mollie->setApiKey(env('MOLLIE_API_KEY'));
             $mollie_payment = $mollie->payments->get($_POST['id']);
         } catch (ApiException $e) {
+            return response(null, 500);
         }
 
         if (empty($mollie_payment)) {
-            die('This payment was not found');
+            return response("This payment was not found", 500);
         }
 
         $payment_id = Str::random(50);

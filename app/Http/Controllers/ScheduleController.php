@@ -152,7 +152,7 @@ class ScheduleController extends Controller
                 "times" => Input::get('payments'),
                 "interval" => Input::get('interval') . " days",
                 "description" => $request->description,
-                "webhookUrl" => "https://webshop.example.org/subscriptions/webhook/",
+                "webhookUrl" => "https://webshop.example.org/subscriptions/webhook",
             ]
         );
 

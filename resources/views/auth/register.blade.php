@@ -131,7 +131,7 @@
         </div>
 
         <div class="buttons stretch">
-            <a href="{{route('login')}}" class="button small light">Heb je al een account?</a>
+            <a href="{{route('login')}}" class="button small light">{{__('messages.buttons.login')}}</a>
             <a href="{{route('home')}}" class="button small light">Home</a>
         </div>
     </div>

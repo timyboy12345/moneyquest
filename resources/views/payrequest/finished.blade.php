@@ -7,7 +7,12 @@
     <div class="wrapper">
         <div class="block">
             <h3 class="text-center">{{__('messages.words.request')}}</h3>
-            <p>{{__('messages.yay')}}</p>
+
+            @if ($mollie_payment->status == 'paid')
+                <p>{{__('messages.pay.success')}}</p>
+            @else
+                <p>{{__('messages.pay.error')}}</p>
+            @endif
         </div>
     </div>
 @endsection

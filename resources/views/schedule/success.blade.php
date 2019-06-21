@@ -13,7 +13,7 @@
     <a href="{{route('home')}}" class="title">MoneyQ</a>
     <div class="wrapper">
         <div class="block">
-            <p>{{__('payments.subscription.success')}}</p>
+            <p>{{__('messages.pay.subscription_success')}}</p>
         </div>
     </div>
 @endsection

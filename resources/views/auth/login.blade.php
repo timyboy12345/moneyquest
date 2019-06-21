@@ -7,7 +7,7 @@
     <div class="wrapper">
         <div class="block">
             <h3 class="text-center">{{__('messages.buttons.login')}}</h3>
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST">
                 @csrf
 
                 <div class="formline">
@@ -34,7 +34,7 @@
         </div>
 
         <div class="buttons stretch">
-            <a href="{{route('register')}}" class="button small light">Nog geen account?</a>
+            <a href="{{route('register')}}" class="button small light">{{__('messages.buttons.noaccount')}}</a>
             <a href="{{route('home')}}" class="button small light">Home</a>
         </div>
     </div>
